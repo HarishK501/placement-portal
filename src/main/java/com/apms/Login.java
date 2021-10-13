@@ -24,9 +24,6 @@ public class Login extends HttpServlet {
 		String password = request.getParameter("password");
 		
 		HttpSession session = request.getSession();
-		session.setAttribute("user", "0");
-		
-
 		
 		if (usr_reg.equals("18501") && password.equals("12345")) 
 		{

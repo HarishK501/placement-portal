@@ -5,6 +5,12 @@
 	<jsp:param name="title" value="Login" />
 </jsp:include>
 
+<% 
+	if (session.getAttribute("user") != null)
+		response.sendRedirect("home");
+
+%>
+
 <div id="login-div" class="div-cards">
         <div class="row">
             <div class="col-lg-6" style="text-align: center; padding: 4% 3%;">

@@ -1,8 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-  
+
+<% 
+	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+	if (session.getAttribute("user") == null)
+		response.sendRedirect("/ApmsWebApp/login");
+%>
+
 <!-- student home page-->  
 <jsp:include page="nav.jsp"></jsp:include>
+
 
 	<div id="job-profiles-div" class="div-cards pad-h5 pad-v3">
         <h2 style="display: inline-block;">Job Profiles</h2>
@@ -96,7 +103,7 @@
 
     <script>
         $(document).ready(() => {
-            document.body.style.backgroundImage = "url(\"../public/images/image2.png\")";
+            document.body.style.backgroundImage = "url(\"./public/images/image2.png\")";
             document.body.style.backgroundSize = "cover";
             document.body.style.backgroundAttachment = "fixed";
             $("th > a").css("color", "#000");
