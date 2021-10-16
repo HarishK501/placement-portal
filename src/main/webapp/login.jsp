@@ -19,7 +19,7 @@
 
             <div id="login-form-div" class="col-lg-6" style="padding: 7%;"><br>
                 <h1 class="logo">APMS</h1>
-                <h4>Amrita Placement Management System</h4><br>
+                <h4> Placement Management System</h4><br>
                 <!-- <em>Placement management made easy</em> -->
                 <form action="login" method="POST">
                     <div class="form-group">
