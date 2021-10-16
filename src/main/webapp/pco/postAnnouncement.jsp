@@ -35,14 +35,9 @@
             <div id="announcement-upload-file-div" class="form-group hide">
                 <br>
                 <div>
-                    <div class="custom-file" style="width: 400px;">
-                        <div class="form-group">
-                			<label for="doc-name">File Name</label>
-                			<input type="text" name="docName" id="doc-name" class="form-control">
-            			</div>
-            			
+                    <div class="custom-file" style="width: 400px;">          			
             			<div class="form-group">
-                			<label for="doc-src">Source</label>
+                			<label for="doc-src">Document Link</label>
                 			<input type="url" name="docSrc" id="doc-src" class="form-control">
             			</div>
                     </div>

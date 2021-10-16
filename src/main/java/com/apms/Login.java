@@ -24,15 +24,14 @@ public class Login extends HttpServlet {
 		String password = request.getParameter("password");
 		
 		HttpSession session = request.getSession();
+		// TODO: Connect to DB and verify credentials
 		
-		if (usr_reg.equals("18501") && password.equals("12345")) 
-		{
+		if (usr_reg.equals("18501") && password.equals("12345")) {
 			session.setAttribute("user", "1");
-//			response.sendRedirect("stud/home.jsp");
-		} else if (usr_reg.equals("12345") && password.equals("12345")) 
-		{
+			session.setAttribute("id", "18501");
+		} else if (usr_reg.equals("12345") && password.equals("12345")) {
 			session.setAttribute("user", "2");
-//			response.sendRedirect("pco/home.jsp");
+			session.setAttribute("id", "12345");
 		}
 		
 		response.sendRedirect("home");

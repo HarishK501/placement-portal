@@ -22,6 +22,7 @@ public class Home extends HttpServlet {
 			response.sendRedirect("login");
 		else {
 			int user =  Integer.parseInt((String) session.getAttribute("user"));
+			// TODO: set attributes in request object based on student/pco
 			if (user == 1) {
 				RequestDispatcher rd_stud = request.getRequestDispatcher("stud/home.jsp");
 				rd_stud.forward(request, response);

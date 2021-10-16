@@ -112,4 +112,5 @@
             $("th > a").css("color", "#000");
         });
     </script>
+    
 <jsp:include page="../partials/footer.jsp"></jsp:include>
