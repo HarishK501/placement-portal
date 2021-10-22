@@ -63,7 +63,7 @@ public class Login extends HttpServlet {
 				if (rs.next()) {
 					session.setAttribute("user", "2");
 					session.setAttribute("id", rs.getInt(1));
-				} 				
+				}
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

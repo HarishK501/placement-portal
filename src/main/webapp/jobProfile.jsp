@@ -138,7 +138,7 @@
 	
 	            <br /><br />
 	            <% if (session.getAttribute("user").equals("1")) { %>
-	                <a href="/application/(--job-id)" class="btn btn-primary" style="width: 150px"><i
+	                <a href="/application?jobid=(--job-id)" class="btn btn-primary" style="width: 150px"><i
 	                        class="fas fa-plus" style="margin-right: 5px"></i> APPLY</a>
 	                <% } %>
 	</div>

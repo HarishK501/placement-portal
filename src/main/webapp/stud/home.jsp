@@ -24,7 +24,7 @@
             </thead>
             <tbody>
                 <tr>
-                    <th scope="row"><a href="/job/123567">Engineer/Sr Engineer- Cloud Managed Services</a></th>
+                    <th scope="row"><a href="/job?id=12356">Engineer/Sr Engineer- Cloud Managed Services</a></th>
                     <td>Versa Networks</td>
                     <td class="job-location-td">Bangalore, Chennai</td>
                     <td style="text-align: center;"><span class="status bg-primary">OPEN</span></td>
