@@ -9,8 +9,6 @@
 
 <!-- student home page-->  
 <jsp:include page="nav.jsp"></jsp:include>
-
-
 	<div id="job-profiles-div" class="div-cards pad-h5 pad-v3">
         <h2 style="display: inline-block;">Job Profiles</h2>
         <a href="#" id="job-profiles-external-link" class="external-link"><i

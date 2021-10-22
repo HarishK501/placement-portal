@@ -33,7 +33,13 @@
                         <input class="form-control" type="password" name="password" id="password"
                             placeholder="Enter your password" required>
                     </div>
+                    
+                    <div class="custom-control custom-checkbox">
+                		<input type="checkbox" name="isPco" class="custom-control-input" id="customCheck1">
+                		<label class="custom-control-label" for="customCheck1">Placement Coordinator</label>
+            		</div>
                     <br>
+                    
                     <button type="submit" class="btn btn-primary">Sign In</button>
                     <a href="#" class="btn btn-outline-secondary">Forgot Password?</a>
                 </form>
