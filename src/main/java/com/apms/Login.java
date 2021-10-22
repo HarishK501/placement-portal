@@ -25,17 +25,18 @@ public class Login extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String usr_reg = request.getParameter("reg_no");
-		String password = request.getParameter("password");
-		String isPco = request.getParameter("isPco");
+		String p = request.getParameter("p");
 		
 		ApmsDao dao = new ApmsDao();
 		Connection conn = dao.getConnection();
 		
 		HttpSession session = request.getSession();
 		
-		if (isPco == null) { //student
+		if (p.equals("1")) { //student
 			try {
+				String usr_reg = request.getParameter("reg_no");
+				String password = request.getParameter("password");
+				
 				PreparedStatement query = conn.prepareStatement("select * from Student where regNo=? and passwd=?");
 				query.setString(1, usr_reg);
 				query.setString(2, password);
@@ -43,27 +44,30 @@ public class Login extends HttpServlet {
 				ResultSet rs = query.executeQuery();
 				if (rs.next()) {
 					session.setAttribute("user", "1");
-					session.setAttribute("id", "18501");
+					session.setAttribute("id", rs.getInt(1));
 				} 				
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		} 
 		else { //pco
-			System.out.println(false);
+			try {
+				String email = request.getParameter("email");
+				String password = request.getParameter("password");
+				
+				PreparedStatement query = conn.prepareStatement("select * from coordinator where email=? and passwd=?");
+				query.setString(1, email);
+				query.setString(2, password);
+				
+				ResultSet rs = query.executeQuery();
+				if (rs.next()) {
+					session.setAttribute("user", "2");
+					session.setAttribute("id", rs.getInt(1));
+				} 				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
-		
-		
-		// TODO: Connect to DB and verify credentials
-		
-//		if (usr_reg.equals("18501") && password.equals("12345")) {
-//			session.setAttribute("user", "1");
-//			session.setAttribute("id", "18501");
-//		} else if (usr_reg.equals("12345") && password.equals("12345")) {
-//			session.setAttribute("user", "2");
-//			session.setAttribute("id", "12345");
-//		}
-		
 		response.sendRedirect("home");
 	}
 }

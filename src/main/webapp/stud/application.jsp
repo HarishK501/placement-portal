@@ -64,13 +64,13 @@
             $("#choose-resume-option").click(() => {
                 $("#upload-resume-div").hide();
                 $("#choose-resumes-div").fadeIn();
-                $("#resume-upload-input").attr("required", "false")
+                $("#resume-upload-input").prop("required", "false")
             })
 
             $("#upload-resume-option").click(() => {
                 $("#choose-resumes-div").hide();
                 $("#upload-resume-div").fadeIn();
-                $("#resume-upload-input").attr("required", "true")
+                $("#resume-upload-input").prop("required", "true")
             })
 
         });

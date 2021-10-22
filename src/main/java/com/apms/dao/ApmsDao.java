@@ -30,29 +30,4 @@ public class ApmsDao {
 			e.printStackTrace();
 		}
 	}
-	
-	
-	
-	
-	
-//	public boolean login(String user, String pass) {
-//		try {
-//			
-//			PreparedStatement query = conn.prepareStatement("select * from Student where regNo=? and passwd=?");
-//			query.setString(1, user);
-//			query.setString(2, pass);
-//			
-//			ResultSet rs = query.executeQuery();
-//			if (rs.next()) {
-//				return true;
-//			} else {
-//				return false;
-//			}
-//			
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			return false;
-//		}
-//		
-//	}
 }
