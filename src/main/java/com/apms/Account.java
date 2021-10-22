@@ -20,7 +20,7 @@ public class Account extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// change password or account details
-		doGet(request, response);
+		doGet(request, response); 
 	}
 
 }
