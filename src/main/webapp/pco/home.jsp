@@ -1,3 +1,6 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.apms.obj.AnnouncementObj"%>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 
@@ -10,8 +13,6 @@
 %>
 
 <jsp:include page="nav.jsp"></jsp:include>
-
-
 
 <div id="job-profiles-div" class="div-cards pad-h5 pad-v3">
         <h2 style="display: inline-block;">Job Profiles</h2>
@@ -58,31 +59,27 @@
                 <br><br>
                 <table class="table table-hover">
                     <tbody>
+                    <% 
+					ArrayList<AnnouncementObj> announcements = (ArrayList<AnnouncementObj>) request.getAttribute("announcements");
+                    for (AnnouncementObj a:announcements){
+					%>
                         <tr>
                             <td>
-                                <a style="color: black;text-decoration: none;" href="/post/123">
+                                <a style="color: black;text-decoration: none;" href="announcement?t=view&id=<%=a.id %>">
                                     <span style="display: block;">
-                                        <h5>HCL Technologies Invites 2022 B.E/B. Tech Graduates</h5>
-                                        Dear Students, Please find attached the JD from HCL...
+                                        <h5><%=a.title %></h5>
+                                        <%=a.content %>
                                     </span>
 
                                 </a>
 
                             </td>
-                            <td style="color: rgb(158, 155, 155);">Mon Aug 23 2021 20:37:20</td>
-                            <!-- Date().substring(0, 24) -->
+                            <td style="color: rgb(158, 155, 155);"><%=a.datetime %></td>
+
                         </tr>
-                        <tr>
-                            <td>
-                                <h5>Versa 2nd drive: JD for MS</h5>Dear Students,
-                                Please find attached the new job description...
-                            </td>
-                            <td style="color: rgb(158, 155, 155);">Sun Aug 22 2021 10:37:40</td>
-                        </tr>
+                        <% } %>
                     </tbody>
                 </table>
-
-
             </div>
         </div>
         <div class="col-lg-4" style="padding: 5px; text-align: center;">

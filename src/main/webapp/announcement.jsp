@@ -15,38 +15,35 @@
 	<jsp:include page="pco/nav.jsp"></jsp:include>
 <% } %> 
 
+<% 
+String title = (String) request.getAttribute("title");
+String content = (String) request.getAttribute("content");
+String postedBy = (String) request.getAttribute("postedBy");
+String dateTime = (String) request.getAttribute("datetime");
+String docLink = (String) request.getAttribute("attachment");
+%>
+
 	<div class="div-cards pad-h5 pad-v3">
-	    <h3>HCL Technologies Invites 2022 B.E/B. Tech Graduates</h3>
+	    <h3>
+	    <%=title %>
+	    </h3>
+	    <p style="color:blue">
+	    <%=postedBy %><br>
+	    <%=dateTime %>
+	    </p>
 	    <br>
 	    <div>
-	        Dear Students,<br>
-	        Please find attached the JD from HCL Technologies for BTech 2022 batch.<br>
-	        Eligibility: B.Tech. CSE, ECE, EEE, EIE, Mechanical<br>
-	        Only with 75% throughout in academics(10th, 12th / Diploma & UG)<br>
-	        Compensation: 4.75 LPA<br><br>
-	        Note :<br>
-	        1. Probation period for selected SE/GET will be of 12 Months.<br>
-	        2. Also will have a service agreement of 24 Months, if the student leaves before this
-	        duration
-	        he/she is required to
-	        pay 1.25 lacs INR.<br><br>
-	        <strong><em>Students who are eligible & interested should register on or before 25th August
-	                2021, 5 pm</em></strong>
-	        <br><br><br>
-	        Regards,<br>
-	        XYZ<br>
-	        Joint Director, Placement<br>
-	        Amrita Vishwa Vidyapeetham<br>
+	        <%=content %>
 	    </div>
 	    <br><br>
 	
 	    <div class="attached-docs-div">
 	        <a class="btn btn-secondary attached-docs-download-button"
-	            href="/JD Managed Services - Versa Networks.docx">Download <i
+	            href="<%=docLink %>">Download <i
 	                class="fas fa-download"></i></a>
 	        <div class="content">
 	            <i class="far fa-file-alt fa-5x text-primary"></i><br /><br />
-	            <h6>JD - HCL Technologies.docx</h6>
+	            <h6><%=title.substring(0, 20)+"..." %> - Document</h6>
 	        </div>
 	    </div><br>
 	</div>

@@ -64,7 +64,7 @@
                                 </a>
                             </td>
                             <td style="color: rgb(158, 155, 155);">Mon Aug 23 2021 20:37:20</td>
-                            <!-- Date().substring(0, 24) -->
+                            <!-- new Date().toISOString().slice(0, 19).replace('T', ' '); -->
                         </tr>
                         <tr>
                             <td>
