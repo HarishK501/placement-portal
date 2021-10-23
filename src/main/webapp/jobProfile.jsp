@@ -27,7 +27,7 @@
 	    <% if (session.getAttribute("user").equals("2")) { %>
 	        <br>
 	        <div>
-	            <a href="/edit_Jobprofile" class="btn btn-dark pco-options" style="width: 150px"><i
+	            <a href="jobProfile?t=edit" class="btn btn-dark pco-options" style="width: 150px"><i
 	                    class="fas fa-edit" style="margin-right: 5px"></i> Edit</a>
 	            <a href="#" class="btn btn-success pco-options" style="width: 200px"><i
 	                    class="fas fa-table" style="margin-right: 5px"></i> View Applications</a>

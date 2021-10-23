@@ -14,7 +14,7 @@
 <div id="job-profiles-div" class="div-cards pad-h5 pad-v3">
     <h2 style="display: inline-block;">Add Job Profile</h2>
     
-     <form action="/ApmsWebApp/jobProfile" method="POST">
+     <form action="/ApmsWebApp/jobProfile?t=add" method="POST">
          <div class="form-group">
              <label for="Company">Company Name</label>
              <input class="form-control" type="text" name="Company" id="Company" required>
@@ -33,7 +33,7 @@
          </div>
          <div class="form-group">
              <label for="Website">Website</label>
-             <input class="form-control" type="url" name="Website" id="Website" required>
+             <input class="form-control" type="text" name="Website" id="Website" required>
          </div>
          <div class="form-group">
              <label for="Departments"> Courses allowed </label>

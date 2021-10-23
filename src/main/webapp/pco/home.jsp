@@ -28,13 +28,13 @@
             </thead>
             <tbody>
                 <tr>
-                    <th scope="row"><a href="/job/123567">Engineer/Sr Engineer- Cloud Managed Services</a></th>
+                    <th scope="row"><a href="jobProfile?t=123567">Engineer/Sr Engineer- Cloud Managed Services</a></th>
                     <td>Versa Networks</td>
                     <td class="job-location-td">Bangalore, Chennai</td>
                     <td style="text-align: center;">278</td>
                 </tr>
                 <tr>
-                    <th scope="row">SOFTWARE ANALYST</th>
+                    <th scope="row"><a href="jobProfile?t=123569">SOFTWARE ANALYST</a></th>
                     <td>Mitsogo Technologies</td>
                     <td class="job-location-td">Bangalore, Chennai</td>
                     <td style="text-align: center;">352</td>
