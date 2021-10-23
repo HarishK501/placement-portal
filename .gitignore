@@ -1,2 +1,4 @@
 DBCredentials.java
-build/classes/
+build/
+
+*.class
