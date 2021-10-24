@@ -118,7 +118,7 @@ INSERT INTO activities(studentId, activity, date_time) VALUES
 	(1000, 'Applied for Software Engineer role at Atlassian', '2021-07-27 09:37:20'),
     (1000, 'Updated profile', '2021-07-22 10:07:52');
 
-SELECT * FROM activities ORDER BY date_time DESC;
+SELECT * FROM activities where studentId=1000 ORDER BY date_time DESC;
 -- drop table activities;
 
 /*****************************************************************

@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.apms.dao.ApmsDao;
+import com.apms.obj.ActivityObj;
 import com.apms.obj.AnnouncementObj;
 
 @SuppressWarnings("serial")
@@ -66,6 +67,28 @@ public class Home extends HttpServlet {
 
 			if (user == 1) {
 				// TODO: get recent activities from DB
+				ArrayList<ActivityObj> activities = new ArrayList<ActivityObj>(3);
+				try {
+					query = conn.prepareStatement("SELECT * FROM activities where studentId=? ORDER BY date_time DESC");
+					query.setInt(1, (int)session.getAttribute("id"));
+					rs = query.executeQuery();
+					int i = 0;
+					while (i < 3 && rs.next()) {
+						activities.add(
+								new ActivityObj(
+										rs.getString("activity"), 
+										rs.getString("date_time")
+										)
+								);
+						i++;
+					}
+					
+					request.setAttribute("activities", activities);
+					
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				
 				RequestDispatcher rd_stud = request.getRequestDispatcher("stud/home.jsp");		
 				rd_stud.forward(request, response);
 			} else if (user == 2) {

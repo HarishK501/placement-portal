@@ -1,5 +1,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.apms.obj.AnnouncementObj"%>
+<%@page import="com.apms.obj.ActivityObj"%>
+<%! @SuppressWarnings("unchecked") %>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -12,6 +14,18 @@
 
 <!-- student home page-->  
 <jsp:include page="nav.jsp"></jsp:include>
+
+<style>
+.announcement-title { 
+    display: block;
+}
+
+.announcement-content { 
+	color: grey;
+}
+
+</style>
+
 	<div id="job-profiles-div" class="div-cards pad-h5 pad-v3">
         <h2 style="display: inline-block;">Job Profiles</h2>
         <a href="#" id="job-profiles-external-link" class="external-link"><i
@@ -57,7 +71,7 @@
                 <br><br>
                 <table class="table table-hover">
                     <tbody>
-                        <% 
+                    <% 
 					ArrayList<AnnouncementObj> announcements = (ArrayList<AnnouncementObj>) request.getAttribute("announcements");
                     for (AnnouncementObj a:announcements){
 					%>
@@ -66,16 +80,13 @@
                                 <a style="color: black;text-decoration: none;" href="announcement?t=view&id=<%=a.id %>">
                                     <span style="display: block;">
                                         <h5><%=a.title %></h5>
-                                        <%=a.content %>
+                                        <span style="color: grey"><%=a.content %></span>
                                     </span>
-
                                 </a>
-
                             </td>
                             <td style="color: rgb(158, 155, 155);"><%=a.datetime %></td>
-
                         </tr>
-                        <% } %>
+                    <% } %>
                     </tbody>
                 </table>
 
@@ -86,15 +97,22 @@
                 <h3>Your Activities</h3><br>
                 <table class="table">
                     <tbody>
+                    <% 
+					ArrayList<ActivityObj> activities = (ArrayList<ActivityObj>) request.getAttribute("activities");
+                    if (activities.isEmpty()) {
+                    %>
+                    <tr>
+                   		<td colspan="2" style="text-align: center;"><em>-- No activities yet --</em></td>
+                    </tr>
+                    <%
+                    } else {
+                    for (ActivityObj a:activities){
+					%>
                         <tr>
-                            <td>Applied for Software Engineer role at Amazon</td>
-                            <td>Mon Aug 23 2021 20:37:20</td>
-                            <!-- Date().substring(0, 24) -->
+                            <td><%=a.activity %></td>
+                            <td><%=a.datetime %></td>
                         </tr>
-                        <tr>
-                            <td>Updated profile</td>
-                            <td>Sun Aug 22 2021 10:37:40</td>
-                        </tr>
+                    <% }} %>
                     </tbody>
                 </table>
             </div>
@@ -111,6 +129,5 @@
         });
     </script>
 
-
-
 <jsp:include page="../partials/footer.jsp"></jsp:include>
+
