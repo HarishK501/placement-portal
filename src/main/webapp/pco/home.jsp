@@ -91,7 +91,7 @@
                 <a style="width: 250px; margin: 5px;" href="#" class="btn btn-warning">
                 	<i class="fas fa-table mar-r5"></i> View Placements</a>
                 <hr>
-                <a style="width: 250px; margin: 5px;" href="/account" class="btn btn-primary"><i
+                <a style="width: 250px; margin: 5px;" href="/ApmsWebApp/account" class="btn btn-primary"><i
                         class="fas fa-user-shield mar-r5"></i> My Account</a>
                 <a style="width: 250px; margin: 5px;" href="/logout" class="btn btn-dark"><i
                         class="fas fa-power-off mar-r5"></i> Logout</a>
