@@ -1,10 +1,17 @@
+<%@page import="com.apms.obj.JobProfileObj"%>
+<%! @SuppressWarnings("unchecked") %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+
 
 <% 
 	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 	if (session.getAttribute("user") == null)
 		response.sendRedirect("/ApmsWebApp/login");
+%>
+     
+<% 
+	JobProfileObj p = (JobProfileObj) request.getAttribute("jobprofile");
 %>
 
 <% if (session.getAttribute("user").equals("1")) { %>  
@@ -27,7 +34,7 @@
 	    <% if (session.getAttribute("user").equals("2")) { %>
 	        <br>
 	        <div>
-	            <a href="jobProfile?t=edit" class="btn btn-dark pco-options" style="width: 150px"><i
+	            <a href="jobProfile?t=edit-<%=p.id%>" class="btn btn-dark pco-options" style="width: 150px"><i
 	                    class="fas fa-edit" style="margin-right: 5px"></i> Edit</a>
 	            <a href="#" class="btn btn-success pco-options" style="width: 200px"><i
 	                    class="fas fa-table" style="margin-right: 5px"></i> View Applications</a>
@@ -45,83 +52,71 @@
 	            <table class="table">
 	                <tbody>
 	                    <tr>
-	                        <th>Company</th>
-	                        <td>Versa Networks</td>
+	                        <th>Title</th>
+	                        <td><%=p.title %></td> 
 	                    </tr>
 	                    <tr>
-	                        <th>Website</th>
+	                        <th>Description</th>
 	                        <td>
-	                            <a target="blank" href="https://www.versa-networks.com/">Link</a>
+	                            <%=p.discriptions %>
+	                        </td>
+	                    </tr>
+	                    <tr>
+	                        <th>FTE/Intern</th>
+	                        <td><%=p.type_int_fte %></td>
+	                    </tr>
+	                    <tr>
+	                        <th>CTC</th>
+	                        <td>
+	                            <%=p.CTC %>
+	                        </td>
+	                    </tr>
+	                    <tr>
+	                        <th>Organization</th>
+	                        <td>
+	                            <%=p.organizations %>
 	                        </td>
 	                    </tr>
 	                    <tr>
 	                        <th>Location</th>
-	                        <td>Bangalore, Chennai</td>
-	                    </tr>
-	                    <tr>
-	                        <th>Summary</th>
 	                        <td>
-	                            The Cloud Managed Services engineer will be responsible for
-	                            providing end to end management as well as technical support
-	                            to debug diverse complex networking problems reported by
-	                            customer on the Versa hosted platform/solution.
+	                            <%=p.location %>
 	                        </td>
 	                    </tr>
 	                    <tr>
-	                        <th>Educational Qualification</th>
+	                        <th>Due Date</th>
+	                        <td><%=p.end_date %></td>
+	                    </tr>
+	                    <tr>
+	                        <th>Posted On</th>
 	                        <td>
-	                            The candidate must have a Bachelor's/Master's degree in IT/
-	                            Computer Science or equivalent.
+	                           <%=p.posted_on %>
 	                        </td>
 	                    </tr>
 	                    <tr>
-	                        <th>Professional Qualification</th>
+	                        <th>Departments</th>
 	                        <td>
-	                            Advanced Routing/switching skills /CCNP skills or equivalent
-	                            level of experience. Versa certification will be highly
-	                            preferred (SD-WAN Associate / SD-WAN Specialist)
+	                             <%=p.depts %>
 	                        </td>
 	                    </tr>
 	                    <tr>
-	                        <th>Experience</th>
-	                        <td>5+ years of hands-on experience.</td>
-	                    </tr>
-	                    <tr>
-	                        <th>Roles and Responsibilities</th>
+	                        <th>Year of Graduation</th>
 	                        <td>
-	                            Monitor and take corrective actions for hosted environment.
-	                            <br />Helps customer to solve reported product and network
-	                            problems of varied complexity. <br />Replicate the customer
-	                            issues in lab environment. <br />Work with engineering teams
-	                            to replicate customer issues and test possible fixes.
-	                            <br />Work on problems of diverse scope across all solutions
-	                            from Versa <br />Incident/ticket lifecycle management
-	                            <br />Setting up infrastructure. <br />Create knowledge
-	                            articles. <br />Ability to write bash/python
-	                            scripts(optional)
+	                            <%=p.YOG %>
 	                        </td>
 	                    </tr>
 	                    <tr>
-	                        <th>Essential Skills</th>
+	                        <th>Minimun CGPA</th>
 	                        <td>
-	                            Experience in configuration and troubleshooting networks and
-	                            security appliances. <br />Experience in Threat Analysis and
-	                            Security Incident handling <br />Certifications like CEH ,
-	                            GIAC (Global Information Assurance Certification) ,CCSP will
-	                            be added advantage
+	                            <%=p.minimun_cgpa %>
 	                        </td>
 	                    </tr>
 	                    <tr>
-	                        <th>Competancy</th>
+	                        <th>Gender</th>
 	                        <td>
-	                            Team player, can-do attitude and takes initiative.
-	                            <br />Ability to work independently as well as in a team (in
-	                            start-up environment). <br />Good communication skills to
-	                            work with cross-functional groups. <br />Strong skills in
-	                            large-scale software design and development. <br />Excellent
-	                            verbal and written communication skills.
+	                            <%=p.gender %>
 	                        </td>
-	                    </tr>
+	                    </tr> 
 	                </tbody>
 	            </table>
 	            <br /><br />

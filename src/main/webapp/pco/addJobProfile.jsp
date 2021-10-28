@@ -16,58 +16,62 @@
     
      <form action="/ApmsWebApp/jobProfile?t=add" method="POST">
          <div class="form-group">
-             <label for="Company">Company Name</label>
-             <input class="form-control" type="text" name="Company" id="Company" required>
+             <label for="Title">Title</label>
+             <input class="form-control" type="text" name="Title" id="Title" required>
          </div>
          <div class="form-group">
-             <label for="Role">Role</label>
-             <input class="form-control" type="text" name="Role" id="Role" required>
+             <label for="descriptions">Description</label>
+             <textarea class="form-control" name="descriptions" rows="5" cols="10"></textarea>
          </div>
          <div class="form-group">
-             <label for="Location">Location</label>
-             <input class="form-control" type="text" name="Location" id="Location" required>
+             <label for="type_int_fte">FTE/Intern</label>
+             <input class="form-control" type="text" name="type_int_fte" id="type_int_fte" required>
          </div>
          <div class="form-group">
-             <label for="Profile">Company Profile</label>
-             <textarea class="form-control" name="Profile" rows="5" cols="10"></textarea>
+             <label for="CTC">Cost To Company(CTC)</label>
+             <input class="form-control" type="number" name="CTC" id="CTC" required>
          </div>
          <div class="form-group">
-             <label for="Website">Website</label>
-             <input class="form-control" type="text" name="Website" id="Website" required>
+             <label for="organizations">Organization</label>
+             <input class="form-control" type="text" name="organizations" id="organizations" required>
          </div>
          <div class="form-group">
-             <label for="Departments"> Courses allowed </label>
-             <input class="form-control" type="text" name="Departments" id="Departments" required>
+             <label for="location"> Location </label>
+             <input class="form-control" type="text" name="location" id="location" required>
          </div>
          <div class="form-group">
-             <label for="Eligibility">Eligibility(CGPA)</label>
-             <input class="form-control" type="text" name="Eligibility" id="Eligibility" required>
+             <label for="end_date">Due Date</label>
+             <input class="form-control" type="date" name="end_date" id="end_date" required>
          </div>
          <div class="form-group">
-             <label for="Arrear">Arrear status</label>
-             <input class="form-control" type="text" name="Arrear" id="Arrear" required>
+             <label for="posted_on">Posted On</label>
+             <input class="form-control" type="date" name="posted_on" id="posted_on" required>
          </div>
          <div class="form-group">
-             <label for="Technical">Technical Knowledge</label>
-             <textarea class="form-control" name="Technical" rows="5" cols="10"></textarea>
+             <label for="depts">Department</label>
+             <input class="form-control" type="text" name="depts" id="depts" required>
          </div>
          <div class="form-group">
-             <label for="Skills">Essential Skills</label>
-             <textarea class="form-control" name="Skills" rows="5" cols="10"></textarea>
+             <label for="YOG">Year of Graduation</label>
+             <input class="form-control" type="number" name="YOG" id="YOG" required>
          </div>
          <div class="form-group">
-             <label for="Process">Placement Process</label>
-             <textarea class="form-control" name="Process" rows="5" cols="10"></textarea>
+             <label for="minimum_cgpa">CGPA</label>
+             <input class="form-control" type="number" name="ctc" id="ctc" required>
+         </div>
+		 <div class="form-group">
+             <label for="gender">Gender</label>
+             <input class="form-control" type="text" name="gender" id="gender" required>
          </div>
          <div class="form-group">
-             <label for="ctc">Cost To Company(CTC)</label>
-             <input class="form-control" type="text" name="ctc" id="ctc" required>
+             <label for="postedby">Posted By</label>
+             <input class="form-control" type="text" name="postedby" id="postedby" required>
          </div>
+         
          <div class="form-group">
-             <label for="Attachments">Attachments</label>
-             <input type="file" class="form-control-file" id="Attachments" name="Attachments" >
+             <label for="attached_doc">Attached Document</label>
+             <input type="file" class="form-control-file" id="attached_doc" name="Attachments" >
          </div>
-
 
          <br>
 

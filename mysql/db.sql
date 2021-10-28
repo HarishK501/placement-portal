@@ -133,7 +133,7 @@ job profile (down)
 
 create table JobProfile(id int primary key AUTO_INCREMENT,
  title varchar(100),
- descriptions varchar(100),
+ descriptions varchar(10000),
  type_int_fte varchar(10),
  CTC decimal,
  organizations varchar(50),
@@ -151,6 +151,6 @@ create table JobProfile(id int primary key AUTO_INCREMENT,
 
 insert into JobProfile(title,descriptions,type_int_fte,CTC,organizations,location,end_date,posted_on,depts,YOG,minimum_cgpa,gender,postedby,attached_doc) values('Amazon SDE', 'Looking for people who are innovators','FTE',3,'Amazon','bangalore','2021-10-13','2021-10-05','CSE, ECE', 2022, 8, 'ALL', 2000, 8000); 
 insert into JobProfile(title,descriptions,type_int_fte,CTC,organizations,location,end_date,posted_on,depts,YOG,minimum_cgpa,gender,postedby,attached_doc) values('Microsoft SDE', 'Looking for SDE role','FTE',30,'Microsoft','Hyderabad','2021-07-13','2021-07-20','CSE', 2022, 8, 'ALL', 2001, 8001); 
-
+insert into JobProfile(title,descriptions,type_int_fte,CTC,organizations,location,end_date,posted_on,depts,YOG,minimum_cgpa,gender,postedby,attached_doc) values('cisco-sde', 'This method is used to execute statements such as insert, update, delete. It returns an integer value representing the number of rows affected','FTE',13,'cisco','chennai','2021-10-27','2021-10-28','CSE', 2022, 8.0, 'all', 2000, 8001);
 
 select * from jobprofile;
