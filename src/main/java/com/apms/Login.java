@@ -27,8 +27,7 @@ public class Login extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String p = request.getParameter("p");
 		
-		ApmsDao dao = new ApmsDao();
-		Connection conn = dao.getConnection();
+		Connection conn = ApmsDao.conn;
 		
 		HttpSession session = request.getSession();
 		

@@ -32,8 +32,7 @@ public class Home extends HttpServlet {
 		else {
 			int user =  Integer.parseInt((String) session.getAttribute("user"));
 
-			ApmsDao dao = new ApmsDao();
-			Connection conn = dao.getConnection();
+			Connection conn = ApmsDao.conn;
 			PreparedStatement query;
 			ResultSet rs;
 			

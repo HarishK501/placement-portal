@@ -28,8 +28,7 @@ public class Announcement extends HttpServlet {
 				int id = Integer.parseInt(request.getParameter("id"));
 
 				try {
-					ApmsDao dao = new ApmsDao();
-					Connection conn = dao.getConnection();
+					Connection conn = ApmsDao.conn;
 					
 					PreparedStatement query = conn.prepareStatement("select * from Announcements where id=?");
 					query.setInt(1, id);

@@ -38,8 +38,7 @@ public class Account extends HttpServlet {
 		// change password or account details
 		String action = request.getParameter("action");
 		if (action != null) {
-			ApmsDao dao = new ApmsDao();
-			Connection conn = dao.getConnection();
+			Connection conn = ApmsDao.conn;
 			
 			if (action.equals("change_password")) {
 				String oldPass = request.getParameter("oldpasswd");
