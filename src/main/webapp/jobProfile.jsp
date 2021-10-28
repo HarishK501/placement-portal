@@ -30,7 +30,7 @@
 	</style>
 	
 	<div id="job-profile" class="div-cards pad-h5 pad-v3">
-	    <h3>Engineer/Sr Engineer- Cloud Managed Services</h3>
+	    <h3><%=p.title %></h3>
 	    <% if (session.getAttribute("user").equals("2")) { %>
 	        <br>
 	        <div>
@@ -51,10 +51,7 @@
 	            <br /><br />
 	            <table class="table">
 	                <tbody>
-	                    <tr>
-	                        <th>Title</th>
-	                        <td><%=p.title %></td> 
-	                    </tr>
+	                    
 	                    <tr>
 	                        <th>Description</th>
 	                        <td>

@@ -56,8 +56,8 @@
              <input class="form-control" type="number" name="YOG" id="YOG" required>
          </div>
          <div class="form-group">
-             <label for="minimum_cgpa">CGPA</label>
-             <input class="form-control" type="number" name="ctc" id="ctc" required>
+             <label for="cgpa">CGPA</label>
+             <input class="form-control" type="number" name="cgpa" id="cgpa" required>
          </div>
 		 <div class="form-group">
              <label for="gender">Gender</label>
