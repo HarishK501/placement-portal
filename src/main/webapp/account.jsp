@@ -103,7 +103,7 @@
                         <p class="lead" id="accounts_contact">**********</p>
                     </div>
                     <div class="col col-lg-4" id="accounts_col8div">
-                        <a href="cpwd.html">Change Password</a>
+                        <a href="account?action=change_password">Change Password</a>
 
                     </div>
                 </div>

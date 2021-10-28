@@ -45,9 +45,11 @@ public class Login extends HttpServlet {
 				if (rs.next()) {
 					session.setAttribute("user", "1");
 					session.setAttribute("id", rs.getInt(1));
-				} 				
+					response.sendRedirect("home");
+				} else response.sendRedirect("message?msg_type=1");		
 			} catch (Exception e) {
 				e.printStackTrace();
+				response.sendRedirect("message?msg_type=2");
 			}
 		} 
 		else { //pco
@@ -63,11 +65,12 @@ public class Login extends HttpServlet {
 				if (rs.next()) {
 					session.setAttribute("user", "2");
 					session.setAttribute("id", rs.getInt(1));
-				}
+					response.sendRedirect("home");
+				} else response.sendRedirect("message?msg_type=1");
 			} catch (Exception e) {
 				e.printStackTrace();
+				response.sendRedirect("message?msg_type=2");
 			}
 		}
-		response.sendRedirect("home");
 	}
 }

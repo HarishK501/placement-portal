@@ -94,7 +94,7 @@
         </div>
         <div class="col-lg-5" style="padding: 5px;">
             <div id="activities-div" class="div-cards pad-h5 pad-v3">
-                <h3>Your Activities</h3><br>
+                <h3>My Activities</h3><br>
                 <table class="table">
                     <tbody>
                     <% 

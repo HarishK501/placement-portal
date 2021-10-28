@@ -47,10 +47,8 @@ footer {
     color: grey;
 }
 
-#login-form-div input {
+#login-form-div input, .div-cards input {
     border-radius: 30px;
-    width: 90%;
-    display: inline-block;
 }
 
 div .btn {
