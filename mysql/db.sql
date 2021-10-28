@@ -125,3 +125,32 @@ SELECT * FROM activities where studentId=1000 ORDER BY date_time DESC;
 <table name>
 ******************************************************************/
 
+
+
+/****************************************************************
+job profile (down)
+****************************************************************/
+
+create table JobProfile(id int primary key AUTO_INCREMENT,
+ title varchar(100),
+ descriptions varchar(100),
+ type_int_fte varchar(10),
+ CTC decimal,
+ organizations varchar(50),
+ location varchar(40),
+ end_date date,
+ posted_on date,
+ depts varchar(10),
+ YOG int not null,
+ minimum_cgpa decimal not null,
+ gender varchar(10) not null,
+ postedby int, 
+ attached_doc int,
+ FOREIGN KEY (attached_doc) REFERENCES Documents(id), FOREIGN KEY (postedby) REFERENCES Coordinator(id) );
+
+
+insert into JobProfile(title,descriptions,type_int_fte,CTC,organizations,location,end_date,posted_on,depts,YOG,minimum_cgpa,gender,postedby,attached_doc) values('Amazon SDE', 'Looking for people who are innovators','FTE',3,'Amazon','bangalore','2021-10-13','2021-10-05','CSE, ECE', 2022, 8, 'ALL', 2000, 8000); 
+insert into JobProfile(title,descriptions,type_int_fte,CTC,organizations,location,end_date,posted_on,depts,YOG,minimum_cgpa,gender,postedby,attached_doc) values('Microsoft SDE', 'Looking for SDE role','FTE',30,'Microsoft','Hyderabad','2021-07-13','2021-07-20','CSE', 2022, 8, 'ALL', 2001, 8001); 
+
+
+select * from jobprofile;

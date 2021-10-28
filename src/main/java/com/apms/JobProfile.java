@@ -26,6 +26,19 @@ public class JobProfile extends HttpServlet {
 				System.out.println(t);
 				response.sendRedirect("jobProfile.jsp");
 			}
+			
+			// changes that i do
+			
+			
+			
+			
+			
+			
+			
+			
+			// completed changes of mine
+			
+			
 				
 		}
 		
