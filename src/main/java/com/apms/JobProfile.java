@@ -34,8 +34,10 @@ public class JobProfile extends HttpServlet {
 			}
 			else if (t.charAt(0)=='e'){
 				String id= t.substring(5);
-				
-				response.sendRedirect("pco/editJobProfile.jsp");
+				System.out.println(id);
+				RequestDispatcher rd_stud = request.getRequestDispatcher("pco/editJobProfile.jsp");		
+				rd_stud.forward(request, response);
+				//response.sendRedirect("pco/editJobProfile.jsp");
 			}
 			else {//job-id
 				request.removeAttribute("jobprofile");
@@ -45,11 +47,13 @@ public class JobProfile extends HttpServlet {
 					query = conn.prepareStatement("SELECT * FROM jobprofile WHERE id="+t+";");
 					rs = query.executeQuery();
 					JobProfileObj profile = null ; 
+					
 					while ( rs.next() ) {
-						profile = new JobProfileObj(
+						
+						profile = new JobProfileObj(										
 								        rs.getInt("id"),
 										rs.getString("title"), 
-										rs.getString("discriptions"), 
+										rs.getString("descriptions"), 
 										rs.getString("type_int_fte"),
 										rs.getDouble("CTC"),
 										rs.getString("organizations"),
@@ -58,7 +62,7 @@ public class JobProfile extends HttpServlet {
 										rs.getString("posted_on"),
 										rs.getString("depts"),
 										rs.getInt("YOG"),
-										rs.getDouble("minimun_cgpa"),
+										rs.getDouble("minimum_cgpa"),
 										rs.getString("gender"),
 										rs.getInt("postedby"),
 										rs.getInt("attached_doc")
@@ -72,6 +76,7 @@ public class JobProfile extends HttpServlet {
 					e.printStackTrace();
 				}
 				
+//				response.sendRedirect("/ApmsWebApp/home");
 				RequestDispatcher rd_stud = request.getRequestDispatcher("jobProfile.jsp");		
 				rd_stud.forward(request, response);
 				

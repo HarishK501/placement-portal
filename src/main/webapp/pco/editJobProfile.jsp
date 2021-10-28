@@ -1,5 +1,9 @@
+<%@page import="com.apms.obj.JobProfileObj"%>
+<%! @SuppressWarnings("unchecked") %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+
+
 
 <% 
 	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
@@ -7,6 +11,9 @@
 		response.sendRedirect("/ApmsWebApp/login");
 %>
 
+<% 
+	JobProfileObj p = (JobProfileObj) request.getAttribute("jobprofile");
+%>
 <!-- pco -->  
 
 <jsp:include page="nav.jsp"></jsp:include>
