@@ -37,7 +37,7 @@ public class Application extends HttpServlet {
 			rs = query.executeQuery();
 			
 			if (rs.next()) {
-				title = "Application for" + rs.getString("title");
+				title = "Application for " + rs.getString("title");
 				
 				request.setAttribute("title", title);
 				request.setAttribute("jobId", id);
