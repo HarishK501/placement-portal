@@ -31,7 +31,7 @@
          </div>
          <div class="form-group">
              <label for="descriptions">Description</label>
-             <textarea class="form-control" name="descriptions" rows="5" cols="10"> <%=p.discriptions %> </textarea>
+             <textarea class="form-control" name="descriptions" rows="5" cols="10"> <%=p.descriptions %> </textarea>
          </div>
          <div class="form-group">
              <label for="type_int_fte">FTE/Intern</label>

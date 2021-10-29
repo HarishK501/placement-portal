@@ -167,7 +167,7 @@ public class JobProfile extends HttpServlet {
 					+ "gender='"+request.getParameter("gender")+"' "
 					+"Where id="+request.getParameter("id")+";";
 					
-					
+					System.out.println(query);
 					int m = stmt.executeUpdate(query);
 					if (m==1) {
 						response.sendRedirect("/ApmsWebApp/home");
