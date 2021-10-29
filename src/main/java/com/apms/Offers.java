@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -25,7 +26,7 @@ public class Offers extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		if (session.getAttribute("user") == null)
-			response.sendRedirect("login");
+			response.sendRedirect("message?msg_type=1");
 		else {
 		
 			Connection conn = ApmsDao.conn;
@@ -37,29 +38,35 @@ public class Offers extends HttpServlet {
 			ArrayList<OfferObj> offer = new ArrayList<OfferObj>();
 			
 			try {
-				query = conn.prepareStatement("select * from applications where student_id=? and status='offered' ");
+				query = conn.prepareStatement("select * from application where student_id=? and app_status='offered' ");
 				query.setInt(1, (int)(session.getAttribute("id")));
 				
 				rs = query.executeQuery();
 				while (rs.next()) {
-					query1 = conn.prepareStatement("select * from Jobprofiles where id=?");
+					query1 = conn.prepareStatement("select * from Jobprofile where id=?");
 					query1.setInt(1, rs.getInt("job_id"));
 					rs1 = query1.executeQuery();
+					rs1.next();
 					offer.add(
 							new OfferObj(
-									
+									rs.getInt("job_id"),
 									rs1.getString("title"), 
 									rs1.getString("organizations")
 									)
 							);
 				}
 				
-				request.setAttribute("offer", offer);
-				
+				request.setAttribute("offers", offer);
+//				RequestDispatcher rd = request.getRequestDispatcher("stud/offer.jsp");
+//				rd.forward(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
+//				System.out.println("Here");
+//				response.sendRedirect("message?msg_type=2");
 			}
 
+			RequestDispatcher rd = request.getRequestDispatcher("stud/offer.jsp");
+			rd.forward(request, response);
 			
 			
 		}

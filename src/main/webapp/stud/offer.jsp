@@ -1,11 +1,17 @@
+<%@page import="com.apms.obj.OfferObj"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+<%! @SuppressWarnings("unchecked") %>
 
 <% 
 	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 	if (session.getAttribute("user") == null)
 		response.sendRedirect("/ApmsWebApp/login");
 %>
+
+
 
 <jsp:include page="nav.jsp"></jsp:include>
 	<style>
@@ -51,17 +57,18 @@
 
     <div class="div-cards offers_1" id="offers_div">
         <h2 style="margin-top:20px; margin-left:86px;">Offers</h2>
-
+        <% ArrayList<OfferObj> offers = (ArrayList<OfferObj>) request.getAttribute("offers"); 
+        for (OfferObj o:offers) {
+       	%>
         <div class="mydiv">
-            <h3> <a href="#">SOFTWARE TEST ENGINEER</a></h3>
-            <p>&#127970; Cognizoft </p>
+            <h3> <a href="jobProfile?t=<%=o.id%>&n=true"><%=o.title %></a></h3>
+            <p>&#127970; <%=o.company %> </p>
 
         </div>
-        <div class="mydiv">
-            <h3> <a href="#">PRODUCT EVANGELIST</a></h3>
-            <p> &#127970; Dell </p>
-
-        </div>
+        <%
+        }
+        %>
+        
         
     </div>
 
