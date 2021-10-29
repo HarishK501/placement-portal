@@ -6,13 +6,19 @@
 	if (session.getAttribute("user") == null)
 		response.sendRedirect("/ApmsWebApp/login");
 %>
+
+<%
+String title = (String) request.getAttribute("title");
+String id = (String) request.getAttribute("id");
+
+%>
  
 <jsp:include page="nav.jsp"></jsp:include>
 
     <div id="job-application-form-div" class="div-cards pad-h5 pad-v3">
-        <h3>Application for (--Job title--)</h3>
+        <h3><%=title %></h3>
         <br>
-        <form action="application?t=12367" method="POST">
+        <form action="application?id=<%=id %>" method="POST">
             <p><i class="fas fa-info-circle text-warning"></i> <em> All your current details from your profile will be
                     submitted along with this form. Make sure your profile is up to date.</em></p>
             <label for="application-about-company">Please mention a few lines about the company after going through

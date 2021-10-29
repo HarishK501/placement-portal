@@ -34,7 +34,6 @@ public class JobProfile extends HttpServlet {
 			}
 			else if (t.charAt(0)=='e'){
 				String id= t.substring(5);
-				System.out.println(id);
 				
 				try {
 					query = conn.prepareStatement("SELECT * FROM jobprofile WHERE id="+id+";");
@@ -75,7 +74,6 @@ public class JobProfile extends HttpServlet {
 			}
 			else {//job-id
 				request.removeAttribute("jobprofile");
-				System.out.println(t);
 				
 				try {
 					query = conn.prepareStatement("SELECT * FROM jobprofile WHERE id="+t+";");
@@ -139,7 +137,7 @@ public class JobProfile extends HttpServlet {
 							+ "'"+request.getParameter("depts")+"', "+request.getParameter("YOG")+", "+request.getParameter("cgpa")+", '"+request.getParameter("gender")+"'"
 							+ ", "+request.getParameter("postedby")+", 8001);";
 					
-					System.out.println(query);
+
 					int m = stmt.executeUpdate(query);
 					if (m==1) {
 						response.sendRedirect("/ApmsWebApp/home");
@@ -169,7 +167,6 @@ public class JobProfile extends HttpServlet {
 					+ "gender='"+request.getParameter("gender")+"' "
 					+"Where id="+request.getParameter("id")+";";
 					
-					System.out.println(query);
 					
 					int m = stmt.executeUpdate(query);
 					if (m==1) {

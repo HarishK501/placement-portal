@@ -1,7 +1,9 @@
-<%@page import="com.apms.obj.JobProfileObj"%>
-<%! @SuppressWarnings("unchecked") %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@page import="com.apms.obj.JobProfileObj"%>
+<%@page import="java.util.*"%>
+<%@page import="java.text.*"%>
+
 
 
 <% 
@@ -46,8 +48,20 @@
 	        <% } %>
 	            <br />
 	            <!-- TODO: get details from database --> 
-	            <span class="status bg-primary">OPEN</span>
-	            <em style="margin-left: 3%">Closes in 3 days</em>
+	            <%
+            		Date today = new Date();
+            		SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd"); 
+            		Date endDate = ft.parse(p.end_date);
+            		int x = endDate.compareTo(today);
+            		
+            		if (x == 0) {
+            		%> <span class="status bg-warning">Closes today</span>
+            		<% } else if (x > 0) {
+            		%> <span class="status bg-primary">Open</span>
+            		<% } else {	%>
+            			<span class="status bg-dark">Closed</span>
+            		<% } %>
+	            <!-- <em style="margin-left: 3%">Closes in 3 days</em> -->
 	            <br /><br />
 	            <table class="table">
 	                <tbody>
@@ -55,7 +69,7 @@
 	                    <tr>
 	                        <th>Description</th>
 	                        <td>
-	                            <%=p.discriptions %>
+	                            <%=p.descriptions %>
 	                        </td>
 	                    </tr>
 	                    <tr>
@@ -130,7 +144,7 @@
 	
 	            <br /><br />
 	            <% if (session.getAttribute("user").equals("1")) { %>
-	                <a href="/application?jobid=(--job-id)" class="btn btn-primary" style="width: 150px"><i
+	                <a href="application?id=<%=p.id %>" class="btn btn-primary" style="width: 150px"><i
 	                        class="fas fa-plus" style="margin-right: 5px"></i> APPLY</a>
 	                <% } %>
 	</div>

@@ -18,6 +18,7 @@ import javax.servlet.http.HttpSession;
 import com.apms.dao.ApmsDao;
 import com.apms.obj.ActivityObj;
 import com.apms.obj.AnnouncementObj;
+import com.apms.obj.JobProfileObj;
 
 @SuppressWarnings("serial")
 
@@ -38,6 +39,30 @@ public class Home extends HttpServlet {
 			
 			// getting recent job profiles
 			// TODO: table of job profiles
+			ArrayList<JobProfileObj> jobProfiles = new ArrayList<JobProfileObj>(3);
+			try {
+				query = conn.prepareStatement("SELECT * FROM JobProfile ORDER BY end_date DESC");
+				rs = query.executeQuery();
+				int i = 0;
+				while (i < 3 && rs.next()) {
+					jobProfiles.add(
+							new JobProfileObj(
+									rs.getInt("id"),
+									rs.getString("title"), 
+									rs.getString("organizations"),
+									rs.getString("location"), 
+									rs.getString("end_date")
+									)
+							);
+					i++;
+				}
+				
+				request.setAttribute("jobProfiles", jobProfiles);
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
 			
 			// getting recent announcements
 			ArrayList<AnnouncementObj> announcements = new ArrayList<AnnouncementObj>(3);

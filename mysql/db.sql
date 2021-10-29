@@ -121,14 +121,8 @@ INSERT INTO activities(studentId, activity, date_time) VALUES
 SELECT * FROM activities where studentId=1000 ORDER BY date_time DESC;
 -- drop table activities;
 
-/*****************************************************************
-<table name>
-******************************************************************/
-
-
-
 /****************************************************************
-job profile (down)
+job profile 
 ****************************************************************/
 
 create table JobProfile(id int primary key AUTO_INCREMENT,
@@ -149,8 +143,34 @@ create table JobProfile(id int primary key AUTO_INCREMENT,
  FOREIGN KEY (attached_doc) REFERENCES Documents(id), FOREIGN KEY (postedby) REFERENCES Coordinator(id) );
 
 
-insert into JobProfile(title,descriptions,type_int_fte,CTC,organizations,location,end_date,posted_on,depts,YOG,minimum_cgpa,gender,postedby,attached_doc) values('Amazon SDE', 'Looking for people who are innovators','FTE',3,'Amazon','bangalore','2021-10-13','2021-10-05','CSE, ECE', 2022, 8, 'ALL', 2000, 8000); 
-insert into JobProfile(title,descriptions,type_int_fte,CTC,organizations,location,end_date,posted_on,depts,YOG,minimum_cgpa,gender,postedby,attached_doc) values('Microsoft SDE', 'Looking for SDE role','FTE',30,'Microsoft','Hyderabad','2021-07-13','2021-07-20','CSE', 2022, 8, 'ALL', 2001, 8001); 
-insert into JobProfile(title,descriptions,type_int_fte,CTC,organizations,location,end_date,posted_on,depts,YOG,minimum_cgpa,gender,postedby,attached_doc) values('cisco-sde', 'This method is used to execute statements such as insert, update, delete. It returns an integer value representing the number of rows affected','FTE',13,'cisco','chennai','2021-10-27','2021-10-28','CSE', 2022, 8.0, 'all', 2000, 8001);
+ALTER TABLE JobProfile AUTO_INCREMENT=9000;
+insert into JobProfile(title,descriptions,type_int_fte,CTC,organizations,location,end_date,posted_on,depts,YOG,minimum_cgpa,gender,postedby,attached_doc ) values
+('Amazon SDE','Knowledge of professional software engineering best practices for the full software development life cycle, including coding standards,testing.','FTE',14,'Amazon','Pune','2021-11-20','2021-08-03','CSE,ECE',2022,8,'ALL',2000,8000),
+('Data Engineer','SKILLS:Strong fundamentals on Data Structures and Algorithms,Basic understanding of AWS,Good understanding of SQL ,Programming knowledge on C/Python/Java ','FTE',6,'Knowledge Lens','Banglore','2021-11-10','2021-10-28','B.Tech',2022,8,'ALL',2000,8001),
+('Microsoft SDE', 'Looking for SDE role','FTE',30,'Microsoft','Hyderabad','2021-07-13','2021-07-20','CSE', 2022, 8, 'ALL', 2001, 8001); 
 
-select * from jobprofile;
+select * from jobprofile order by end_date desc;
+
+
+/*****************************************************************
+interviews
+******************************************************************/
+create table interviews(id int primary key AUTO_INCREMENT,
+                       student_id int, 
+                       job_id int,
+                       ondate date,
+                       ontime time,
+                       interview_status varchar(20) ,
+                       FOREIGN KEY (student_id) REFERENCES Student(id),
+                       FOREIGN KEY (job_id) REFERENCES JobProfile(id));
+ALTER TABLE interviews AUTO_INCREMENT=5000;  
+ insert into interviews( student_id , job_id , ondate, ontime, interview_status) values( 1000,9000 ,'2021-10-29', '10:30:00','Completed'); 
+ insert into interviews( student_id , job_id , ondate, ontime, interview_status) values( 1001,9001,'2021-10-31', '11:30:00','Pending');
+ 
+ /*****************************************************************
+applications
+******************************************************************/
+ create table application(id int primary key AUTO_INCREMENT, student_id int, job_id int, app_status varchar(20) , FOREIGN KEY (student_id) REFERENCES Student(id), FOREIGN KEY (job_id) REFERENCES JobProfile(id));
+ ALTER TABLE application AUTO_INCREMENT=3000;  
+     insert into application( student_id , job_id , app_status) values ( 1000, 9000,'offered');
+     insert into application( student_id , job_id , app_status) values ( 1001, 9001,'offered');

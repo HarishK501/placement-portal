@@ -1,4 +1,6 @@
-<%@page import="java.util.ArrayList"%>
+<%@page import="com.apms.obj.JobProfileObj"%>
+<%@page import="java.util.*"%>
+<%@page import="java.text.*"%>
 <%@page import="com.apms.obj.AnnouncementObj"%>
 <%@page import="com.apms.obj.ActivityObj"%>
 <%! @SuppressWarnings("unchecked") %>
@@ -40,24 +42,32 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row"><a href="/job?id=1">Engineer/Sr Engineer- Cloud Managed Services</a></th>
-                    <td>Versa Networks</td>
-                    <td class="job-location-td">Bangalore, Chennai</td>
-                    <td style="text-align: center;"><span class="status bg-primary">OPEN</span></td>
-                </tr>
-                <tr>
-                    <th scope="row"><a href="/job?id=2">SOFTWARE ANALYST</a></th>
-                    <td>Mitsogo Technologies</td>
-                    <td class="job-location-td">Bangalore, Chennai</td>
-                    <td style="text-align: center;"><span class="status bg-success">Applied</span></td>
-                </tr>
-                <tr>
-                    <th scope="row">R&D Development Associate Engineer</th>
-                    <td>Dassault Systèmes</td>
-                    <td class="job-location-td">Pune & Bangalore</td>
-                    <td style="text-align: center;"><span class="status bg-success">Applied</span></td>
-                </tr>
+            <% 
+			ArrayList<JobProfileObj> jobProfiles = (ArrayList<JobProfileObj>) request.getAttribute("jobProfiles");
+            for (JobProfileObj a:jobProfiles){
+            %>
+            	<tr>
+            		<th scope="row"><a href="jobProfile?t=<%=a.id %>"><%=a.title %></a></th>
+            		<td><%=a.organizations %></td>
+            		<td class="job-location-td"><%=a.location %></td>
+            		<td style="text-align: center;">
+            		<%
+            		Date today = new Date();
+            		SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd"); 
+            		Date endDate = ft.parse(a.end_date);
+            		int x = endDate.compareTo(today);
+            		
+            		if (x == 0) {
+            		%> <span class="status bg-warning">Closes today</span>
+            		<% } else if (x > 0) {
+            		%> <span class="status bg-primary">Open</span>
+            		<% } else {	%>
+            			<span class="status bg-dark">Closed</span>
+            		<% } %>
+            		</td>
+            	</tr>
+                
+                <% } %>
             </tbody>
         </table>
     </div>
