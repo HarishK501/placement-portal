@@ -13,7 +13,7 @@ CREATE TABLE Student(
     fullname VARCHAR(40) NOT NULL, 
     dob DATE, gender VARCHAR(1) NOT NULL, 
     phone VARCHAR(10) UNIQUE NOT NULL, 
-    address VARCHAR(50), 
+    address VARCHAR(500), 
     currentSem INT NOT NULL, 
     yearOfGrad INT NOT NULL, 
     dept VARCHAR(10) NOT NULL, 
@@ -22,9 +22,15 @@ CREATE TABLE Student(
 ALTER TABLE Student AUTO_INCREMENT=1000;
 
 INSERT INTO student(regNo,email,passwd,fullname,DOB,gender,phone,address,currentSem,yearOfGrad,dept,section,isPlaced) VALUES
-	('CB.EN.U4CSE18501','harishcse18501@gmail.com','harry','Harish K','2000-09-22','M','9677340574','Narasimhanaickenpalayam, Coimbatore',7,2022,'CSE','A',TRUE),
-	('CB.EN.U4CSE18054','sridharantablet@gmail.com','SRI','Sridharan A R','2000-12-06','M','9600778264','Saibaba colony, Coimbatore',7,2022,'CSE','A',TRUE),
-    ('CB.EN.U4CSE18041','divyasri@gmail.com','Divya','Parripati Divyasri','2001-10-15','F','8374619928','Vivekananda Nagar, Hyderabad',7,2022,'CSE','A',TRUE);
+	('CB.EN.U4CSE18501','harishcse18501@gmail.com','harry','Harish K','2000-09-22','M','677340574','Narasimhanaickenpalayam, Coimbatore',7,2022,'CSE','A',TRUE),
+	('CB.EN.U4CSE18054','sridharantablet@gmail.com','SRI','Sridharan A R','2000-12-06','M','960078264','Saibaba colony, Coimbatore',7,2022,'CSE','A',TRUE),
+    ('CB.EN.U4CSE18041','divyasri@gmail.com','Divya','Parripati Divyasri','2001-10-15','F','83746928','Vivekananda Nagar, Hyderabad',7,2022,'CSE','A',TRUE),
+    ('CB.EN.U4EEE18001','aakashkrish2323@gmail.com','akash','Aakash Krishna R','2001-03-23','M','638482534','No.1119, 2nd Floor, Westend Colony, AnnaNagar west, Chennai',7,2022,'EEE','A',false),
+	('CB.EN.U4MEC18001','abhiiniit2@gmail.com','abhi','Abhi Suwetha B','2001-05-06','F','803842633','A-6, Cup Street, Block-12, Neyveli',7,2022,'MEC','A',TRUE),
+    ('CB.EN.U4ECE18001','sudhamshakula6@gmail.com','sudhamshu','Akula Sudhamshu','2001-10-15','M','994996474','7-1-324, Yashodha Krishna hospital, MankammaThota, karimnagar, Telangana',7,2022,'ECE','A',false),
+    ('CB.EN.U4CSE18010','nikhilsai1376@gmail.com','nikhil','Bandi Sai Nikhil Reddy','2001-03-15','M','977442167','H.No: 80-131-92-19, Housing Board Colony, Abbas Nagar, Kurnool',7,2022,'CSE','A',false),
+	('CB.EN.U4EEE18019','haran465@gmail.com','haran','Hariharan B','2000-08-25','M','489768715','11/12, GajaPriya House, Alpha Nagar Extension, Karumandapam, Trichy',7,2022,'EEE','A',TRUE),
+    ('CB.EN.U4CSE18049','sia@gmail.com','sia','Sia','2001-10-15','F','837619928','Vivekananda Nagar, Hyderabad',7,2022,'CSE','A',false);
 
 SELECT * FROM student;
 /*****************************************************************
@@ -40,8 +46,10 @@ CREATE TABLE Coordinator(
 ALTER TABLE Coordinator AUTO_INCREMENT=2000;
 
 INSERT INTO coordinator(email,passwd,fullname,phone) VALUES
-	('baskaran@gmail.com', 'baski','Baskaran V', '8987085341'),
-    ('srikanthcir@gmail.com', 'srikanth','Srikanth', '9999786234');
+	('baskaran@gmail.com', 'baski','Baskaran V', '987085341'),
+    ('srikanthcir@gmail.com', 'srikanth','Srikanth', '999786234'),
+    ('maya@gmail.com', 'maya','Maya R', '879085341'),
+    ('senthil@gmail.com', 'senthil','Senthil K', '923456789');
     
 SELECT * FROM Coordinator;
 
