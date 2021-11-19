@@ -30,6 +30,9 @@ public class JobProfile extends HttpServlet {
 			String t = request.getParameter("t");
 			if (t.equals("add")) {
 				response.sendRedirect("pco/addJobProfile.jsp");
+			} 
+			else if (t.equals("view_all")) {
+				response.sendRedirect("pco/addJobProfile.jsp");
 			}
 			else if (t.charAt(0)=='e'){
 				String id= t.substring(5);
@@ -68,7 +71,7 @@ public class JobProfile extends HttpServlet {
 				
 				RequestDispatcher rd_stud = request.getRequestDispatcher("pco/editJobProfile.jsp");		
 				rd_stud.forward(request, response);
-				//response.sendRedirect("pco/editJobProfile.jsp");
+				
 			}
 			else if(t.charAt(0)=='d'){
 				String id= t.substring(7);

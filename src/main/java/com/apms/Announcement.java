@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,8 +12,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.apms.dao.ApmsDao;
+import java.util.*;
+import java.text.*;
 
 @SuppressWarnings("serial")
 @WebServlet(name = "announcement", urlPatterns = { "/announcement" })
@@ -50,9 +54,10 @@ public class Announcement extends HttpServlet {
 						query = conn.prepareStatement("select * from Documents where id=?");
 						query.setInt(1, x);
 						rs_x = query.executeQuery();
-						rs_x.next();
+						if (rs_x.next()) {
+							request.setAttribute("attachment", rs_x.getString("link"));
+						}
 						
-						request.setAttribute("attachment", rs_x.getString("link"));
 						RequestDispatcher rd = request.getRequestDispatcher("announcement.jsp");
 						rd.forward(request, response);
 						
@@ -68,7 +73,63 @@ public class Announcement extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// add record in DB
-		response.sendRedirect("/ApmsWebApp/home");
+		Connection conn = ApmsDao.conn;
+		HttpSession session = request.getSession();
+		
+		Date today = new Date();
+	    SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss"); 
+	    String postedOn = ft.format(today);
+	    int id =  (int) session.getAttribute("id");
+	    String query;
+	    
+		try {
+			Statement stmt = conn.createStatement();
+			String docSrc = request.getParameter("docSrc"); 
+
+			if (docSrc.length() == 0) {  // if a document is not provided
+				query = "INSERT INTO Announcements(title, content, date_time, postedBy) VALUES"
+						+ "('" + request.getParameter("title") + "', '" + request.getParameter("content") + "', '" 
+						+ postedOn + "'," + id + ")";    
+				
+				int m = stmt.executeUpdate(query);
+				if (m==1) {
+					response.sendRedirect("/ApmsWebApp/home");
+				} 
+				else {
+					response.sendRedirect("message?msg_type=1");
+				}
+			}
+				
+			else { // if a document is provided
+				query = "INSERT INTO Documents(link) VALUES" + "('" + docSrc + "')";
+				
+				stmt.executeUpdate(query, Statement.RETURN_GENERATED_KEYS);
+				
+				int docId = 8001;
+				
+				ResultSet rs = stmt.getGeneratedKeys();
+				if (rs.next()){
+				    docId = rs.getInt(1);
+				}
+
+				query = "INSERT INTO Announcements(title, content, date_time, postedBy, attachedDoc) VALUES"
+						+ "('" + request.getParameter("title") + "', '" + request.getParameter("content") + "', '" 
+						+ postedOn + "', " + id + ", " + docId +")";
+				
+				int m = stmt.executeUpdate(query);
+				if (m==1) {
+					response.sendRedirect("/ApmsWebApp/home");
+				} 
+				else {
+					response.sendRedirect("message?msg_type=1");
+				}
+				
+			}
+			    	
+		} catch (Exception e) {
+			e.printStackTrace();
+			response.sendRedirect("message?msg_type=2");
+		}
 	}
 
 }

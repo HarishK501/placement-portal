@@ -107,7 +107,8 @@ INSERT INTO Announcements(title, content, date_time, postedBy, attachedDoc) VALU
     Anu K Manappuram<br>
     Manager - Corporate Relations<br>
     Corporate & Industry Relations', '2021-08-20 10:37:34', 2000, 8001);
-    
+-- INSERT INTO Announcements(title, content, date_time, postedBy) VALUES('hello', '1221212', '2021-11-19 20:38:11', 2000);
+
 SELECT * FROM announcements ORDER BY date_time DESC; 
 -- drop table announcements;
 

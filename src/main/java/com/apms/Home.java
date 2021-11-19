@@ -71,12 +71,17 @@ public class Home extends HttpServlet {
 				query = conn.prepareStatement("SELECT * FROM announcements ORDER BY date_time DESC");
 				rs = query.executeQuery();
 				int i = 0;
+				String content;
 				while (i < 3 && rs.next()) {
+					content = rs.getString("content");
+					if (content.length() > 60) {
+						content = content.substring(0, 60) + "...";
+					}
 					announcements.add(
 							new AnnouncementObj(
 									rs.getString("id"),
 									rs.getString("title"), 
-									rs.getString("content").substring(0, 60)+"...", 
+									content, 
 									rs.getString("date_time")
 									)
 							);
