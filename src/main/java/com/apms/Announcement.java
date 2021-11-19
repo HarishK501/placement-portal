@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 import javax.servlet.RequestDispatcher;
@@ -15,6 +16,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.apms.dao.ApmsDao;
+import com.apms.obj.AnnouncementObj;
+
 import java.util.*;
 import java.text.*;
 
@@ -28,6 +31,43 @@ public class Announcement extends HttpServlet {
 			String t = request.getParameter("t");
 			if (t.equals("post"))
 				response.sendRedirect("pco/postAnnouncement.jsp");
+			else if (t.equals("view_all")) {
+				RequestDispatcher rd = request.getRequestDispatcher("all_announcements.jsp");
+				Connection conn = ApmsDao.conn;
+				PreparedStatement query;
+				ResultSet rs;
+				
+				ArrayList<AnnouncementObj> announcements = new ArrayList<AnnouncementObj>();
+				
+				try {
+					query = conn.prepareStatement("SELECT * FROM announcements ORDER BY date_time DESC");
+					rs = query.executeQuery();
+
+					String content;
+					while (rs.next()) {
+						content = rs.getString("content");
+						if (content.length() > 60) {
+							content = content.substring(0, 60) + "...";
+						}
+						announcements.add(
+								new AnnouncementObj(
+										rs.getString("id"),
+										rs.getString("title"), 
+										content, 
+										rs.getString("date_time")
+										)
+								);
+					}
+					
+					request.setAttribute("announcements", announcements);
+					
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				
+				request.setAttribute("announcements", announcements);
+				rd.forward(request, response);
+			}
 			else if (t.equals("view")) {
 				int id = Integer.parseInt(request.getParameter("id"));
 

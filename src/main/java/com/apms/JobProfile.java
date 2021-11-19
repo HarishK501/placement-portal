@@ -16,6 +16,7 @@ import com.apms.dao.ApmsDao;
 import com.apms.obj.JobProfileObj;
 
 import java.sql.Statement;
+import java.util.ArrayList;
 @SuppressWarnings("serial")
 
 @WebServlet(name = "jobProfile", urlPatterns = { "/jobProfile" })
@@ -32,9 +33,32 @@ public class JobProfile extends HttpServlet {
 				response.sendRedirect("pco/addJobProfile.jsp");
 			} 
 			else if (t.equals("view_all")) {
-				response.sendRedirect("pco/addJobProfile.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("all_jobProfiles.jsp");
+				
+				ArrayList<JobProfileObj> jobProfiles = new ArrayList<JobProfileObj>();
+				try {
+					query = conn.prepareStatement("SELECT * FROM JobProfile ORDER BY end_date DESC");
+					rs = query.executeQuery();
+					while (rs.next()) {
+						jobProfiles.add(
+								new JobProfileObj(
+										rs.getInt("id"),
+										rs.getString("title"), 
+										rs.getString("organizations"),
+										rs.getString("location"), 
+										rs.getString("end_date")
+										)
+								);
+					}
+					
+					request.setAttribute("jobProfiles", jobProfiles);
+					
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				rd.forward(request, response);
 			}
-			else if (t.charAt(0)=='e'){
+			else if (t.charAt(0)=='e'){ //edit Job Profile
 				String id= t.substring(5);
 				try {
 					query = conn.prepareStatement("SELECT * FROM jobprofile WHERE id="+id+";");

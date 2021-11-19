@@ -25,12 +25,12 @@ INSERT INTO student(regNo,email,passwd,fullname,DOB,gender,phone,address,current
 	('CB.EN.U4CSE18501','harishcse18501@gmail.com','harry','Harish K','2000-09-22','M','677340574','Narasimhanaickenpalayam, Coimbatore',7,2022,'CSE','A',TRUE),
 	('CB.EN.U4CSE18054','sridharantablet@gmail.com','SRI','Sridharan A R','2000-12-06','M','960078264','Saibaba colony, Coimbatore',7,2022,'CSE','A',TRUE),
     ('CB.EN.U4CSE18041','divyasri@gmail.com','Divya','Parripati Divyasri','2001-10-15','F','83746928','Vivekananda Nagar, Hyderabad',7,2022,'CSE','A',TRUE),
-    ('CB.EN.U4EEE18001','aakashkrish2323@gmail.com','akash','Aakash Krishna R','2001-03-23','M','638482534','No.1119, 2nd Floor, Westend Colony, AnnaNagar west, Chennai',7,2022,'EEE','A',false),
+    ('CB.EN.U4EEE18001','aakashkrish2323@gmail.com','akash','Aakash Krishna R','2001-03-23','M','638482534','No.1119, 2nd Floor, Westend Colony, AnnaNagar west, Chennai',7,2022,'EEE','A',FALSE),
 	('CB.EN.U4MEC18001','abhiiniit2@gmail.com','abhi','Abhi Suwetha B','2001-05-06','F','803842633','A-6, Cup Street, Block-12, Neyveli',7,2022,'MEC','A',TRUE),
-    ('CB.EN.U4ECE18001','sudhamshakula6@gmail.com','sudhamshu','Akula Sudhamshu','2001-10-15','M','994996474','7-1-324, Yashodha Krishna hospital, MankammaThota, karimnagar, Telangana',7,2022,'ECE','A',false),
-    ('CB.EN.U4CSE18010','nikhilsai1376@gmail.com','nikhil','Bandi Sai Nikhil Reddy','2001-03-15','M','977442167','H.No: 80-131-92-19, Housing Board Colony, Abbas Nagar, Kurnool',7,2022,'CSE','A',false),
+    ('CB.EN.U4ECE18001','sudhamshakula6@gmail.com','sudhamshu','Akula Sudhamshu','2001-10-15','M','994996474','7-1-324, Yashodha Krishna hospital, MankammaThota, karimnagar, Telangana',7,2022,'ECE','A',FALSE),
+    ('CB.EN.U4CSE18010','nikhilsai1376@gmail.com','nikhil','Bandi Sai Nikhil Reddy','2001-03-15','M','977442167','H.No: 80-131-92-19, Housing Board Colony, Abbas Nagar, Kurnool',7,2022,'CSE','A',FALSE),
 	('CB.EN.U4EEE18019','haran465@gmail.com','haran','Hariharan B','2000-08-25','M','489768715','11/12, GajaPriya House, Alpha Nagar Extension, Karumandapam, Trichy',7,2022,'EEE','A',TRUE),
-    ('CB.EN.U4CSE18049','sia@gmail.com','sia','Sia','2001-10-15','F','837619928','Vivekananda Nagar, Hyderabad',7,2022,'CSE','A',false);
+    ('CB.EN.U4CSE18049','sia@gmail.com','sia','Sia','2001-10-15','F','837619928','Vivekananda Nagar, Hyderabad',7,2022,'CSE','A',FALSE);
 
 SELECT * FROM student;
 /*****************************************************************
@@ -107,7 +107,113 @@ INSERT INTO Announcements(title, content, date_time, postedBy, attachedDoc) VALU
     Anu K Manappuram<br>
     Manager - Corporate Relations<br>
     Corporate & Industry Relations', '2021-08-20 10:37:34', 2000, 8001);
--- INSERT INTO Announcements(title, content, date_time, postedBy) VALUES('hello', '1221212', '2021-11-19 20:38:11', 2000);
+
+INSERT INTO Announcements(title, content, date_time, postedBy, attachedDoc) VALUES
+	('Payoda 2022 Graduates', 
+    'Dear Students,<br>
+	Please find the requirement from Payoda for 2022 batch.<br>
+	Eligibility: BTech CSE, ECE, EEE, EIE and MSc Applied statistics & Data Analytics<br>
+    Criteria:<br>
+	1. 75% & above in 10th & 12th & above in Degree without standing arrears<br>
+	2. Streams: Circuit Branches (CSE, IT, ECE, MSc IT & MSc Software Engineering)<br>
+    Job Role:<br>
+	3. Associate Software Engineer (Will be hiring under Payoda Technologies Pvt  Ltd)<br>
+	Compensation: 4.5 LPA<br><br>
+	Note :<br>
+    1. During Internship/Trainee the stipend would be paid as  Rs10k (Based on the requirements, we will reach out to the selected candidates for internship opportunities)<br>
+	2. Duration of Intern/Trainee: 6 months/3 months (The duration is subjected to change basis requirement & performance of the intern/trainee)
+	<br><br>
+    Students who are eligible & interested should register on or before 25th Oct 2021, 1 pm : https://forms.gle/G9oaYMS6wr5RNWRw8<br>
+	Regards,<br>
+	Srikanth<br>
+	Joint Director, Placement<br>
+	Amrita Vishwa Vidyapeetham<br>', '2021-10-21 22:21:18', 2002, 8001);
+    
+
+INSERT INTO Announcements(title, content, date_time, postedBy, attachedDoc) VALUES
+	('Afford Medical Technologies for 2022 batch  ', 
+    'Dear Students,<br>
+	Eligibility Criteria - B.Tech/B.E (CS/IT or comparable streams/specialisations) Gap year after 12th class is not a problem<br>
+    Hiring Process: Resume + Github based shortlisting followed by coding test and minimum 2 technical interviews<br>
+	Internship Duration - 6 months to 1 year subject to college/university norms Stipend - 15,000 per month<br>
+	Compensation: <br>
+    CTC for full time employment - Rs. 5,67,000(Salary + Bonus + Employers PF Contribution) + 3 Lakhs Medical Insurance Cover<br>
+	Monthly Fixed Pay - 42,000<br>
+	Bond or Service Agreement if any - No Bond. Conversion to Full Time Role is subject to performance during the internship
+    Students who are eligible & interested should register :  https://forms.gle/8VtLcc6qgQFbmMrs58<br>
+	Regards,<br>
+	Srikanth<br>
+	Joint Director, Placement<br>
+	Amrita Vishwa Vidyapeetham<br>', '2021-11-15 16:00:00', 2001, 8001);
+    
+    
+INSERT INTO Announcements(title, content, date_time, postedBy, attachedDoc) VALUES
+	('HashedIn By Deloitte for 2022 batch  ', 
+    'Dear Students,<br>
+    Please find attached the requirements from Hashedhin. Eligible students may register in the given below link on or before 17th Nov 2.00.p.m.<br>
+    Dear Team, Greetings from HashedIn by Deloitte! Hope you are safe and doing good. We will be having virtual campus hiring drive again for 2022 batch for multiple roles with HashedIn by Deloitte. Hence, we will need your support to pick the best students from your campus.<br>
+    Eligibility: B.E/B.Tech, MCA, M. E/MTech, (CS, IT, IS,) ECE,EEE with no active backlogs with 60% or 6.0 CGPA in B.Tech/ M.Tech/ MCA<br>
+	Note:<br>
+    1.Intern (6 Months) + Software Engineer will start immediately and Intern (6 Months) + Integration Engineer will start from end of November.<br>
+    2.We are looking forward to starting our virtual campus hiring process from your campus.<br>
+	Compensation: <br>
+    Criteria Intern (6 Months) + Software Engineer INR 25,000 per month INR 8.1 LPA<br>
+    Students who are eligible & interested should register : https://forms.gle/TQLDvu9rnmNMGUrw6<br>
+	Regards,<br>
+	Srikanth<br>
+	Joint Director, Placement<br>
+	Amrita Vishwa Vidyapeetham<br>', '2021-11-13 17:30:00', 2003, 8001);
+
+
+INSERT INTO Announcements(title, content, date_time, postedBy, attachedDoc) VALUES
+	('CRMantra for BTech 2022 batch', 
+    'Dear Students,<br>
+    Please find the job requirement from CRMantra for BTech 2022 batch<br>
+    Eligibility: BTech - CSE,ECE,EEE,EIE with 6 CGPA and above<br>
+	Note:<br>
+    1.Internship Stipend :  25K <br>
+    2.Note : There will be assessment during the internship period which all the selects have to seriously undertake and clear.<br>
+	Compesation:3.5 LPA (Upon Successful conversion of internship)<br>
+    Students who are eligible & interested should register by EOD : hhttps://forms.gle/77CYSbLZg5mt5M9X6<br>
+	Regards,<br>
+	Srikanth<br>
+	Joint Director, Placement<br>
+	Amrita Vishwa Vidyapeetham<br>', '2021-11-21 13:00:00', 2001, 8001);
+    
+    
+    INSERT INTO Announcements(title, content, date_time, postedBy, attachedDoc) VALUES
+	('Campus Hiring || Thryve Digital || 2022 Batch', 
+    'Dear Students,<br>
+    Please find the job requirement from Thryve Digital for BTech (CSE) -  2022 batch<br>
+    Eligibility Criteria:    B.Tech in CSE<br>
+    Job Title: Software Engineer Trainee<br>
+	Job Type: Internship & FTE (Candidates successfully completing internship will be converted to Full Time)<br>
+	Job Location: Chennai / Hyderabad<br><br>
+    Academic Percentage: 50% through out in 10th & 12th (or diploma) , 70% throughout in graduation<br>
+    Internship Stipend: INR 15,000 /per month<br>
+	Compensation:  7 LPA ( 6 LPA is fixed ; 1 LPA is variable pay)<br>
+   Students who are eligible & interested should register on or before 17th Nov 2021, 10 am : https://forms.gle/ZEkSLMfm6Rq8Dnu3A<br>
+	Regards,<br>
+	Srikanth<br>
+	Joint Director, Placement<br>
+	Amrita Vishwa Vidyapeetham<br>', '2021-11-16 12:00:00', 2003, 8001);
+    
+    
+     INSERT INTO Announcements(title, content, date_time, postedBy, attachedDoc) VALUES
+	('Tata Elxsi - 2022 Batch', 
+    'Dear Students,<br>
+    Please find the opportunity from Tata Elxsi. Unplaced students can register with the below link latest by 20 October 10:00AM.<br>
+    Eligibility Criteria: Minimum 60% agg in 10th, 10+2, BE/BTech and ME/MTech or MCA with no backlogs and only 2022 Batch.<br>
+    Specialisation: CSE, EEE, ECE, Instrumentation, Information Science, Embedded, Cyber Security, Data Science, Artificial Intelligence & Machine Learning, Automotive Electronics, Applied Electronics, Mechatronics, Computer Applications.<br>
+    Work location: Trivandrum, Bangalore, Chennai, Pune and Hyderabad (in the order of hiring priorities)<br>
+	Form: https://forms.office.com/Pages/ResponsePage.aspx?id=3TlqrbaWaEOC2vLsTZLiasrTo-reirRGt6-_6LOUlmdUMk8wRzRDSUdEUE9DWlFTMjJNSlBYNFk2SS4u
+<br>
+	Regards,<br>
+	Srikanth<br>
+	Joint Director, Placement<br>
+	Amrita Vishwa Vidyapeetham<br>', '2021-10-19 10:00:00', 2003, 8001);
+    
+
 
 SELECT * FROM announcements ORDER BY date_time DESC; 
 -- drop table announcements;
@@ -127,59 +233,59 @@ INSERT INTO activities(studentId, activity, date_time) VALUES
 	(1000, 'Applied for Software Engineer role at Atlassian', '2021-07-27 09:37:20'),
     (1000, 'Updated profile', '2021-07-22 10:07:52');
 
-SELECT * FROM activities where studentId=1000 ORDER BY date_time DESC;
+SELECT * FROM activities WHERE studentId=1000 ORDER BY date_time DESC;
 -- drop table activities;
 
 /****************************************************************
 job profile 
 ****************************************************************/
 
-create table JobProfile(id int primary key AUTO_INCREMENT,
- title varchar(100),
- descriptions varchar(10000),
- type_int_fte varchar(10),
- CTC decimal,
- organizations varchar(50),
- location varchar(40),
- end_date date,
- posted_on date,
- depts varchar(10),
- YOG int not null,
- minimum_cgpa decimal not null,
- gender varchar(10) not null,
- postedby int, 
- attached_doc int,
+CREATE TABLE JobProfile(id INT PRIMARY KEY AUTO_INCREMENT,
+ title VARCHAR(100),
+ descriptions VARCHAR(10000),
+ type_int_fte VARCHAR(10),
+ CTC DECIMAL,
+ organizations VARCHAR(50),
+ location VARCHAR(40),
+ end_date DATE,
+ posted_on DATE,
+ depts VARCHAR(10),
+ YOG INT NOT NULL,
+ minimum_cgpa DECIMAL NOT NULL,
+ gender VARCHAR(10) NOT NULL,
+ postedby INT, 
+ attached_doc INT,
  FOREIGN KEY (attached_doc) REFERENCES Documents(id), FOREIGN KEY (postedby) REFERENCES Coordinator(id) );
 
 
 ALTER TABLE JobProfile AUTO_INCREMENT=9000;
-insert into JobProfile(title,descriptions,type_int_fte,CTC,organizations,location,end_date,posted_on,depts,YOG,minimum_cgpa,gender,postedby,attached_doc ) values
+INSERT INTO JobProfile(title,descriptions,type_int_fte,CTC,organizations,location,end_date,posted_on,depts,YOG,minimum_cgpa,gender,postedby,attached_doc ) VALUES
 ('Amazon SDE','Knowledge of professional software engineering best practices for the full software development life cycle, including coding standards,testing.','FTE',14,'Amazon','Pune','2021-11-20','2021-08-03','CSE,ECE',2022,8,'ALL',2000,8000),
 ('Data Engineer','SKILLS:Strong fundamentals on Data Structures and Algorithms,Basic understanding of AWS,Good understanding of SQL ,Programming knowledge on C/Python/Java ','FTE',6,'Knowledge Lens','Banglore','2021-11-10','2021-10-28','B.Tech',2022,8,'ALL',2000,8001),
 ('Microsoft SDE', 'Looking for SDE role','FTE',30,'Microsoft','Hyderabad','2021-07-13','2021-07-20','CSE', 2022, 8, 'ALL', 2001, 8001); 
 
-select * from jobprofile order by end_date desc;
+SELECT * FROM jobprofile ORDER BY end_date DESC;
 
 
 /*****************************************************************
 interviews
 ******************************************************************/
-create table interviews(id int primary key AUTO_INCREMENT,
-                       student_id int, 
-                       job_id int,
-                       ondate date,
-                       ontime time,
-                       interview_status varchar(20) ,
+CREATE TABLE interviews(id INT PRIMARY KEY AUTO_INCREMENT,
+                       student_id INT, 
+                       job_id INT,
+                       ondate DATE,
+                       ontime TIME,
+                       interview_status VARCHAR(20) ,
                        FOREIGN KEY (student_id) REFERENCES Student(id),
                        FOREIGN KEY (job_id) REFERENCES JobProfile(id));
 ALTER TABLE interviews AUTO_INCREMENT=5000;  
- insert into interviews( student_id , job_id , ondate, ontime, interview_status) values( 1000,9000 ,'2021-10-29', '10:30:00','Completed'); 
- insert into interviews( student_id , job_id , ondate, ontime, interview_status) values( 1001,9001,'2021-10-31', '11:30:00','Pending');
+INSERT INTO interviews( student_id , job_id , ondate, ontime, interview_status) VALUES( 1000,9000 ,'2021-10-29', '10:30:00','Completed'); 
+INSERT INTO interviews( student_id , job_id , ondate, ontime, interview_status) VALUES( 1001,9001,'2021-10-31', '11:30:00','Pending');
  
- /*****************************************************************
+/*****************************************************************
 applications
 ******************************************************************/
- create table application(id int primary key AUTO_INCREMENT, student_id int, job_id int, app_status varchar(20) , FOREIGN KEY (student_id) REFERENCES Student(id), FOREIGN KEY (job_id) REFERENCES JobProfile(id));
- ALTER TABLE application AUTO_INCREMENT=3000;  
-     insert into application( student_id , job_id , app_status) values ( 1000, 9000,'offered');
-     insert into application( student_id , job_id , app_status) values ( 1001, 9001,'offered');
+CREATE TABLE application(id INT PRIMARY KEY AUTO_INCREMENT, student_id INT, job_id INT, app_status VARCHAR(20) , FOREIGN KEY (student_id) REFERENCES Student(id), FOREIGN KEY (job_id) REFERENCES JobProfile(id));
+ALTER TABLE application AUTO_INCREMENT=3000;  
+INSERT INTO application( student_id , job_id , app_status) VALUES ( 1000, 9000,'offered');
+INSERT INTO application( student_id , job_id , app_status) VALUES ( 1001, 9001,'offered');

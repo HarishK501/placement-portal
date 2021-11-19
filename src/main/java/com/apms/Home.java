@@ -65,14 +65,14 @@ public class Home extends HttpServlet {
 			
 			
 			// getting recent announcements
-			ArrayList<AnnouncementObj> announcements = new ArrayList<AnnouncementObj>(3);
+			ArrayList<AnnouncementObj> announcements = new ArrayList<AnnouncementObj>(2);
 			
 			try {
 				query = conn.prepareStatement("SELECT * FROM announcements ORDER BY date_time DESC");
 				rs = query.executeQuery();
 				int i = 0;
 				String content;
-				while (i < 3 && rs.next()) {
+				while (i < 2 && rs.next()) {
 					content = rs.getString("content");
 					if (content.length() > 60) {
 						content = content.substring(0, 60) + "...";
@@ -95,7 +95,6 @@ public class Home extends HttpServlet {
 			}
 
 			if (user == 1) {
-				// TODO: get recent activities from DB
 				ArrayList<ActivityObj> activities = new ArrayList<ActivityObj>(3);
 				try {
 					query = conn.prepareStatement("SELECT * FROM activities where studentId=? ORDER BY date_time DESC");
