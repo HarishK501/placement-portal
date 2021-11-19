@@ -28,13 +28,11 @@ public class JobProfile extends HttpServlet {
 			PreparedStatement query;
 			ResultSet rs;
 			String t = request.getParameter("t");
-			
 			if (t.equals("add")) {
 				response.sendRedirect("pco/addJobProfile.jsp");
 			}
 			else if (t.charAt(0)=='e'){
 				String id= t.substring(5);
-				
 				try {
 					query = conn.prepareStatement("SELECT * FROM jobprofile WHERE id="+id+";");
 					rs = query.executeQuery();
@@ -71,6 +69,20 @@ public class JobProfile extends HttpServlet {
 				RequestDispatcher rd_stud = request.getRequestDispatcher("pco/editJobProfile.jsp");		
 				rd_stud.forward(request, response);
 				//response.sendRedirect("pco/editJobProfile.jsp");
+			}
+			else if(t.charAt(0)=='d'){
+				String id= t.substring(7);
+				String sql = "DELETE FROM jobprofile WHERE id = "+id ;
+				System.out.println(sql);
+				try {
+					query =conn.prepareStatement(sql);
+					query.execute();
+					response.sendRedirect("/ApmsWebApp/home");
+				} catch (SQLException e) {
+					System.out.println("error while deleting JobProfile");
+					e.printStackTrace();
+				}
+				
 			}
 			else {//job-id
 				request.removeAttribute("jobprofile");
