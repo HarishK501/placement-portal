@@ -39,7 +39,7 @@ public class Account extends HttpServlet {
 				
 				ArrayList<ActivityObj> activities = new ArrayList<ActivityObj>();
 				try {
-					query = conn.prepareStatement("SELECT * FROM activities where studentId=? ORDER BY date_time DESC");
+					query = conn.prepareStatement("SELECT * FROM activities where studentId=? ORDER BY date_time");
 					query.setInt(1, (int) session.getAttribute("id"));
 					rs = query.executeQuery();
 

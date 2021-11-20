@@ -95,13 +95,13 @@ public class Home extends HttpServlet {
 			}
 
 			if (user == 1) {
-				ArrayList<ActivityObj> activities = new ArrayList<ActivityObj>(3);
+				ArrayList<ActivityObj> activities = new ArrayList<ActivityObj>(5);
 				try {
-					query = conn.prepareStatement("SELECT * FROM activities where studentId=? ORDER BY date_time DESC");
+					query = conn.prepareStatement("SELECT * FROM activities where studentId=? ORDER BY date_time ");
 					query.setInt(1, (int)session.getAttribute("id"));
 					rs = query.executeQuery();
 					int i = 0;
-					while (i < 3 && rs.next()) {
+					while (i < 5 && rs.next()) {
 						activities.add(
 								new ActivityObj(
 										rs.getString("activity"), 
