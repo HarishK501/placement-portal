@@ -20,7 +20,7 @@
 
 <div id="job-profiles-div" class="div-cards pad-h5 pad-v3">
         <h2 style="display: inline-block;">Job Profiles</h2>
-        <a href="#" id="job-profiles-external-link" class="external-link"><i
+        <a href="/ApmsWebApp/jobProfile?t=view_all" id="job-profiles-external-link" class="external-link"><i
                 class="fas fa-external-link-alt"></i></a><br><br>
         <table class="table table-striped table-hover">
             <thead>
@@ -66,7 +66,7 @@
         <div class="col-lg-8" style="padding: 5px;">
             <div id="notifications-div" class="div-cards pad-h5 pad-v3">
                 <h3 style="display: inline-block;">Announcements</h3>
-                <a href="#" id="announcements-external-link" class="external-link"><i
+                <a href="/ApmsWebApp/announcement?t=view_all" id="announcements-external-link" class="external-link"><i
                         class="fas fa-external-link-alt"></i></a>
                 <br><br>
                 <table class="table table-hover">
@@ -105,7 +105,7 @@
                 <hr>
                 <a style="width: 250px; margin: 5px;" href="/ApmsWebApp/account" class="btn btn-primary"><i
                         class="fas fa-user-shield mar-r5"></i> My Account</a>
-                <a style="width: 250px; margin: 5px;" href="/logout" class="btn btn-dark"><i
+                <a style="width: 250px; margin: 5px;" href="/ApmsWebApp/logout" class="btn btn-dark"><i
                         class="fas fa-power-off mar-r5"></i> Logout</a>
 
             </div>

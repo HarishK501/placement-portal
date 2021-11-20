@@ -16,6 +16,7 @@ import com.apms.dao.ApmsDao;
 import com.apms.obj.JobProfileObj;
 
 import java.sql.Statement;
+import java.util.ArrayList;
 @SuppressWarnings("serial")
 
 @WebServlet(name = "jobProfile", urlPatterns = { "/jobProfile" })
@@ -30,8 +31,34 @@ public class JobProfile extends HttpServlet {
 			String t = request.getParameter("t");
 			if (t.equals("add")) {
 				response.sendRedirect("pco/addJobProfile.jsp");
+			} 
+			else if (t.equals("view_all")) {
+				RequestDispatcher rd = request.getRequestDispatcher("all_jobProfiles.jsp");
+				
+				ArrayList<JobProfileObj> jobProfiles = new ArrayList<JobProfileObj>();
+				try {
+					query = conn.prepareStatement("SELECT * FROM JobProfile ORDER BY end_date DESC");
+					rs = query.executeQuery();
+					while (rs.next()) {
+						jobProfiles.add(
+								new JobProfileObj(
+										rs.getInt("id"),
+										rs.getString("title"), 
+										rs.getString("organizations"),
+										rs.getString("location"), 
+										rs.getString("end_date")
+										)
+								);
+					}
+					
+					request.setAttribute("jobProfiles", jobProfiles);
+					
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				rd.forward(request, response);
 			}
-			else if (t.charAt(0)=='e'){
+			else if (t.charAt(0)=='e'){ //edit Job Profile
 				String id= t.substring(5);
 				try {
 					query = conn.prepareStatement("SELECT * FROM jobprofile WHERE id="+id+";");
@@ -68,7 +95,7 @@ public class JobProfile extends HttpServlet {
 				
 				RequestDispatcher rd_stud = request.getRequestDispatcher("pco/editJobProfile.jsp");		
 				rd_stud.forward(request, response);
-				//response.sendRedirect("pco/editJobProfile.jsp");
+				
 			}
 			else if(t.charAt(0)=='d'){
 				String id= t.substring(7);

@@ -30,7 +30,7 @@
 
 	<div id="job-profiles-div" class="div-cards pad-h5 pad-v3">
         <h2 style="display: inline-block;">Job Profiles</h2>
-        <a href="#" id="job-profiles-external-link" class="external-link"><i
+        <a href="/ApmsWebApp/jobProfile?t=view_all" id="job-profiles-external-link" class="external-link"><i
                 class="fas fa-external-link-alt"></i></a><br><br>
         <table class="table table-striped table-hover">
             <thead>
@@ -76,7 +76,7 @@
         <div class="col-lg-7" style="padding: 5px;">
             <div id="notifications-div" class="div-cards pad-h5 pad-v3">
                 <h3 style="display: inline-block;">Announcements</h3>
-                <a href="#" id="announcements-external-link" class="external-link"><i
+                <a href="/ApmsWebApp/announcement?t=view_all" id="announcements-external-link" class="external-link"><i
                         class="fas fa-external-link-alt"></i></a>
                 <br><br>
                 <table class="table table-hover">
@@ -104,7 +104,10 @@
         </div>
         <div class="col-lg-5" style="padding: 5px;">
             <div id="activities-div" class="div-cards pad-h5 pad-v3">
-                <h3>My Activities</h3><br>
+                <h3 style="display: inline-block;">My Activities</h3>
+                <a href="/ApmsWebApp/account?action=view_activities" id="activities-external-link" class="external-link"><i
+                        class="fas fa-external-link-alt"></i></a>
+                <br><br>
                 <table class="table">
                     <tbody>
                     <% 
