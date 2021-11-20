@@ -125,6 +125,8 @@ ALTER TABLE Activities AUTO_INCREMENT=100;
 INSERT INTO activities(studentId, activity, date_time) VALUES
 	(1000, 'Applied for Software Engineer role at Atlassian', '2021-07-27 09:37:20'),
     (1000, 'Updated profile', '2021-07-22 10:07:52');
+    
+
 
 SELECT * FROM activities where studentId=1000 ORDER BY date_time DESC;
 -- drop table activities;
@@ -178,7 +180,10 @@ ALTER TABLE interviews AUTO_INCREMENT=5000;
  /*****************************************************************
 applications
 ******************************************************************/
- create table application(id int primary key AUTO_INCREMENT, student_id int, job_id int, app_status varchar(20) , FOREIGN KEY (student_id) REFERENCES Student(id), FOREIGN KEY (job_id) REFERENCES JobProfile(id));
+
+ create table application(id int primary key AUTO_INCREMENT, student_id int, job_id int, app_status varchar(20) DEFAULT 'Inprogress',applied_on DATETIME ,applicant_review LONGTEXT, FOREIGN KEY (student_id) REFERENCES Student(id), FOREIGN KEY (job_id) REFERENCES JobProfile(id));
  ALTER TABLE application AUTO_INCREMENT=3000;  
-     insert into application( student_id , job_id , app_status) values ( 1000, 9000,'offered');
-     insert into application( student_id , job_id , app_status) values ( 1001, 9001,'offered');
+ 
+     
+
+

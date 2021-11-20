@@ -9,16 +9,16 @@
 
 <%
 String title = (String) request.getAttribute("title");
-String id = (String) request.getAttribute("id");
-
+String jobId = (String) request.getAttribute("jobId");
+int StudId = (int) session.getAttribute("id") ;
 %>
  
 <jsp:include page="nav.jsp"></jsp:include>
 
     <div id="job-application-form-div" class="div-cards pad-h5 pad-v3">
-        <h3><%=title %></h3>
+        <h3>Application for<%=title %></h3>
         <br>
-        <form action="application?id=<%=id %>" method="POST">
+        <form action="application" method="POST">
             <p><i class="fas fa-info-circle text-warning"></i> <em> All your current details from your profile will be
                     submitted along with this form. Make sure your profile is up to date.</em></p>
             <label for="application-about-company">Please mention a few lines about the company after going through
@@ -49,18 +49,16 @@ String id = (String) request.getAttribute("id");
                     </select>
                 </div>
                 <div id="upload-resume-div" class="col-lg-6 form-group" style="display: none;">
-
-
                 			<label for="doc-src">Provide resume link</label>
                 			<p><i class="fas fa-info-circle text-info"></i> <em> Make sure that the link is set to "Anyone can view".</em></p>
                 			<input type="url" name="docSrc" id="doc-src" class="form-control">
-
-
                 </div>
             </div>
-
+             <input type="hidden" id="StudId" name="StudId" value="<%=StudId %>">
+             <input type="hidden" id="JobId" name="JobId" value="<%=jobId %>">
+             <input type="hidden" id="JobTitle" name="JobTitle" value="<%=title %>">
             <br><br>
-            <button style="width: 150px;" class="btn btn-primary">Submit</button>
+             <button type="submit" class="btn btn-primary" style="width: 150px">Submit In</button>
         </form>
     </div><br>
 

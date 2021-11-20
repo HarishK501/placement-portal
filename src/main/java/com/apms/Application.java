@@ -4,6 +4,11 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -36,7 +41,7 @@ public class Application extends HttpServlet {
 			rs = query.executeQuery();
 			
 			if (rs.next()) {
-				title = "Application for " + rs.getString("title");
+				title = " " + rs.getString("title");
 				
 				request.setAttribute("title", title);
 				request.setAttribute("jobId", id);
@@ -55,10 +60,39 @@ public class Application extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //		String id = request.getParameter("id");
+		Connection conn = ApmsDao.conn;
+		int StudId=Integer.parseInt(request.getParameter("StudId")); 
+		System.out.println(request.getParameter("docSrc"));
+		DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
+		Date dateobj = new Date();
+		String _date = df.format(dateobj) ;
+		System.out.println(df.format(dateobj));
+		try {
+			Statement stmt = conn.createStatement();
+
+			String query1 = "insert into application(student_id,job_id,app_status,applied_on,applicant_review) values ( "+StudId+","+request.getParameter("JobId")+",'Inprogress','"+_date+"','"+request.getParameter("aboutCompany")+"');";
+			String query2 = "insert into activities(studentId, activity, date_time) VALUES ("+StudId+", 'Applied for"+request.getParameter("JobTitle")+"', '"+_date+"');";
+			String query3 = "insert into studentProfile"; // studentProfile tabel not implemented yet
+			
+			stmt.addBatch(query1);
+			stmt.addBatch(query2);     
+			int[] m = stmt.executeBatch();
+			if (m[0]==1 && m[1]==1) {
+				response.sendRedirect("/ApmsWebApp/home");
+			} 
+			else {
+				 response.sendRedirect("message?msg_type=1");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			response.sendRedirect("message?msg_type=3");	
+		}
 		
-		// 3. Add application to database
 		
-		doGet(request, response);  //should remove this line
+		//application , activity , student profile
+		
+		
 	}
 
 }
