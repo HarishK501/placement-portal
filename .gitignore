@@ -2,3 +2,4 @@ DBCredentials.java
 build/
 
 *.class
+.DS_Store

@@ -288,17 +288,31 @@ INSERT INTO interviews( student_id , job_id , ondate, ontime, interview_status) 
 applications
 ******************************************************************/
 
- create table application(id int primary key AUTO_INCREMENT, student_id int, job_id int, app_status varchar(20) DEFAULT 'Inprogress',applied_on DATETIME ,applicant_review LONGTEXT, FOREIGN KEY (student_id) REFERENCES Student(id), FOREIGN KEY (job_id) REFERENCES JobProfile(id));
+ create table application(
+	id int primary key AUTO_INCREMENT, 
+	student_id int, 
+    job_id int, 
+    app_status varchar(20) DEFAULT 'Inprogress',
+    applied_on DATETIME,
+    applicant_review LONGTEXT, 
+    FOREIGN KEY (student_id) REFERENCES Student(id), 
+    FOREIGN KEY (job_id) REFERENCES JobProfile(id));
  ALTER TABLE application AUTO_INCREMENT=3000;
+ 
 
-INSERT INTO application( student_id , job_id) VALUES ( 1000, 9000);
-INSERT INTO application( student_id , job_id) VALUES ( 1001, 9000);
-INSERT INTO application( student_id , job_id) VALUES ( 1002, 9000);
-INSERT INTO application( student_id , job_id) VALUES ( 1003, 9001);
-INSERT INTO application( student_id , job_id) VALUES ( 1004, 9001);
-INSERT INTO application( student_id , job_id) VALUES ( 1005, 9001);
-INSERT INTO application( student_id , job_id) VALUES ( 1006, 9002);
-INSERT INTO application( student_id , job_id) VALUES ( 1007, 9002);
-INSERT INTO application( student_id , job_id) VALUES ( 1008, 9002);
-update application set app_status="Completed" where student_id=1006;
-select * from application;
+ 
+ insert into application(student_id, job_id, app_status, applied_on, applicant_review) values
+	(1000, 9000, 'offered' , '2021-07-27 09:37:20', 'Amazon is a well known online Retail company');
+ insert into application(student_id,job_id,app_status,applied_on,applicant_review) values ( 1000 ,9000,'Inprogress','2021-07-27 09:37:20',' Amazon.com, Inc. is an American multinational technology company which focuses on e-commerce, cloud computing, digital streaming, and artificial intelligence');
+
+insert into application(student_id,job_id,app_status,applied_on,applicant_review) values ( 1000 ,9001,'Inprogress','2021-07-27 09:30:20','Knowledge Lens is a US and India based product and services technology company that builds innovative solutions on niche technology areas such as Big Data Analytics, Data Science, Artificial Intelligence, IoT, Blockchain, ');
+
+insert into application(student_id,job_id,app_status,applied_on,applicant_review) values ( 1001 ,9000,'Inprogress','2021-07-27 12:00:17',' Amazon.com, Inc. is an American multinational technology company which focuses on e-commerce, cloud computing, digital streaming, and artificial intelligence');
+
+insert into application(student_id,job_id,app_status,applied_on,applicant_review) values ( 1002 ,9001,'Inprogress','2021-07-27 08:37:20','Knowledge Lens is a US and India based product and services technology company that builds innovative solutions on niche technology areas such as Big Data Analytics, Data Science, Artificial Intelligence, IoT, Blockchain, ');
+
+insert into application(student_id,job_id,app_status,applied_on,applicant_review) values ( 1002 ,9000,'Inprogress','2021-07-27 15:37:10',' Microsoft Corporation is an American multinational technology corporation which produces computer software, consumer electronics, personal computers, and related services');
+ select * from application;
+ 
+SELECT count(*) FROM Student where dept='EEE';
+

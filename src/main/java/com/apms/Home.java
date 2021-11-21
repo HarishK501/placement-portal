@@ -37,8 +37,6 @@ public class Home extends HttpServlet {
 			PreparedStatement query;
 			ResultSet rs;
 			
-			// getting recent job profiles
-			// TODO: table of job profiles
 			ArrayList<JobProfileObj> jobProfiles = new ArrayList<JobProfileObj>(3);
 			try {
 				query = conn.prepareStatement("SELECT * FROM JobProfile ORDER BY end_date DESC");

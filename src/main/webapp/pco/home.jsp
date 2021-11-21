@@ -95,12 +95,12 @@
             </div>
         </div>
         <div class="col-lg-4" style="padding: 5px; text-align: center;">
-            <div id="activities-div" class="div-cards pad-h5 pad-v3">
+            <div class="div-cards pad-h5 pad-v3">
                 <a style="width: 250px; margin: 5px;" href="jobProfile?t=add" class="btn btn-success mar-r5">
                 	<i class="fas fa-plus mar-r5"></i> Add job profile</a>
                 <a style="width: 250px; margin: 5px;" href="announcement?t=post" class="btn btn-danger">
                 	<i class="fas fa-bullhorn mar-r5"></i> Post Announcement</a>
-                <a style="width: 250px; margin: 5px;" href="#" class="btn btn-warning">
+                <a style="width: 250px; margin: 5px;" href="placements" class="btn btn-warning">
                 	<i class="fas fa-table mar-r5"></i> View Placements</a>
                 <hr>
                 <a style="width: 250px; margin: 5px;" href="/ApmsWebApp/account" class="btn btn-primary"><i

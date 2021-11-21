@@ -28,7 +28,6 @@ public class Application extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("id");
 		
-		// TODO
 		// 1. get record from database with the given id
 		// 2. set attributes in request object
 		
