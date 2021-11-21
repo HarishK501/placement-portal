@@ -14,6 +14,8 @@
      
 <% 
 	JobProfileObj p = (JobProfileObj) request.getAttribute("jobprofile");
+    int applied = (int) request.getAttribute("applied?");
+    
 %>
 
 <% if (session.getAttribute("user").equals("1")) { %>  
@@ -143,10 +145,15 @@
 	            </div>
 	
 	            <br /><br />
-	            <% if (session.getAttribute("user").equals("1")) { %>
-	                <a href="application?id=<%=p.id %>" class="btn btn-primary" style="width: 150px"><i
-	                        class="fas fa-plus" style="margin-right: 5px"></i> APPLY</a>
+	            <% if (session.getAttribute("user").equals("1") ) { %>
+	               <% if (applied == 0 ) { %>
+		                <a href="application?id=<%=p.id %>" class="btn btn-primary" style="width: 150px"><i
+		                        class="fas fa-plus" style="margin-right: 5px"></i> APPLY</a>
+	                <% }else{ %>
+	                      <h5>Already Applied!</h5>	      
 	                <% } %>
+	                
+	             <% } %>
 	</div>
 	<br />
 	

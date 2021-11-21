@@ -12,6 +12,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import com.apms.dao.ApmsDao;
 import com.apms.obj.JobProfileObj;
 
@@ -141,6 +143,24 @@ public class JobProfile extends HttpServlet {
 								
 					}
 					
+					int flag=0;
+					HttpSession session = request.getSession();
+					int Id =  (int) session.getAttribute("id") ;
+					 
+					if( Id < 2000 ) {
+						
+						query = conn.prepareStatement("SELECT * FROM application WHERE student_id="+Id+";");
+						rs = query.executeQuery();
+						while ( rs.next() ) {
+							 
+							 if( t.equals(rs.getString("job_id" ))  ) {
+								 
+								 flag=1;
+							 }						   			
+						}
+					}
+					
+					request.setAttribute("applied?", flag );
 					request.setAttribute("jobprofile", profile );
 					
 				} catch (SQLException e) {
