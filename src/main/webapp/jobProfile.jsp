@@ -40,9 +40,9 @@
 	        <div>
 	            <a href="jobProfile?t=edit-<%=p.id%>" class="btn btn-dark pco-options" style="width: 150px"><i
 	                    class="fas fa-edit" style="margin-right: 5px"></i> Edit</a>
-	            <a href="#" class="btn btn-success pco-options" style="width: 200px"><i
+	            <a href="jobProfile?t=view-<%=p.id%>" class="btn btn-success pco-options" style="width: 200px"><i
 	                    class="fas fa-table" style="margin-right: 5px"></i> View Applications</a>
-	            <a href="#" class="btn btn-primary pco-options" style="width: 200px"><i
+	            <a href="jobProfile?t=post-<%=p.id%>" class="btn btn-primary pco-options" style="width: 200px"><i
 	                    class="fas fa-user-tie" style="margin-right: 5px"></i> Post Interview</a>
 	            <a href="jobProfile?t=delete-<%=p.id%>" class="btn btn-danger pco-options" style="width: 150px"><i
 	                    class="fas fa-trash-alt" style="margin-right: 5px"></i> Delete job</a>

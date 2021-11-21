@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.apms.dao.ApmsDao;
+import com.apms.obj.ApplicationObj;
 import com.apms.obj.JobProfileObj;
 
 import java.sql.Statement;
@@ -30,6 +31,10 @@ public class JobProfile extends HttpServlet {
 			Connection conn = ApmsDao.conn;
 			PreparedStatement query;
 			ResultSet rs;
+			PreparedStatement query1;
+			ResultSet rs1;
+			PreparedStatement query2;
+			ResultSet rs2;
 			String t = request.getParameter("t");
 			if (t.equals("add")) {
 				response.sendRedirect("pco/addJobProfile.jsp");
@@ -99,6 +104,50 @@ public class JobProfile extends HttpServlet {
 				rd_stud.forward(request, response);
 				
 			}
+			else if (t.charAt(0)=='v'){
+				RequestDispatcher rd = request.getRequestDispatcher("viewapplications.jsp");
+				String id= t.substring(5);
+				System.out.println(id);
+				ArrayList<ApplicationObj> applicationdata = new ArrayList<ApplicationObj>();
+				try {
+					query = conn.prepareStatement("SELECT * FROM application where job_id="+Integer.parseInt(id)+";");
+					System.out.println(query);
+					rs = query.executeQuery();
+					while (rs.next()) {
+						query1 = conn.prepareStatement("SELECT * FROM Student where id=?;");
+						query1.setInt(1, rs.getInt("student_id"));
+						System.out.println(query1);
+						rs1 = query1.executeQuery();
+						rs1.next();
+						query2 = conn.prepareStatement("SELECT app_status FROM application where student_id="+rs.getInt("student_id")+";");
+						rs2 = query2.executeQuery();
+						System.out.println(query2);
+						rs2.next();
+						applicationdata.add(
+								new ApplicationObj(
+										rs1.getString("regNo"),
+										rs1.getString("email"), 
+										rs1.getString("fullname"),
+										rs1.getString("phone"), 
+										rs1.getString("dept"),
+										rs1.getString("gender"),
+										rs1.getString("section"),
+										rs2.getString("app_status")
+										
+										)
+								);
+					}
+					query = conn.prepareStatement("SELECT * FROM JobProfile where id="+Integer.parseInt(id)+";");
+					rs = query.executeQuery();
+					rs.next();
+					
+					request.setAttribute("title", rs.getString("title"));
+					request.setAttribute("applications", applicationdata);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				rd.forward(request, response);
+			}
 			else if(t.charAt(0)=='d'){
 				String id= t.substring(7);
 				String sql = "DELETE FROM jobprofile WHERE id = "+id ;
@@ -113,6 +162,43 @@ public class JobProfile extends HttpServlet {
 				}
 				
 			}
+			else if (t.charAt(0)=='p'){ //post interview
+				String id= t.substring(5);
+				try {
+					query = conn.prepareStatement("SELECT * FROM jobprofile WHERE id="+id+";");
+					rs = query.executeQuery();
+					JobProfileObj profile = null ; 
+					
+					while ( rs.next() ) {
+						
+						profile = new JobProfileObj(										
+								        rs.getInt("id"),
+										rs.getString("title"), 
+										rs.getString("descriptions"), 
+										rs.getString("type_int_fte"),
+										rs.getDouble("CTC"),
+										rs.getString("organizations"),
+										rs.getString("location"),
+										rs.getString("end_date"),
+										rs.getString("posted_on"),
+										rs.getString("depts"),
+										rs.getInt("YOG"),
+										rs.getDouble("minimum_cgpa"),
+										rs.getString("gender"),
+										rs.getInt("postedby"),
+										rs.getInt("attached_doc")
+										);
+								
+					}
+					
+					request.setAttribute("jobprofile", profile );
+					
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				RequestDispatcher rd_stud = request.getRequestDispatcher("pco/postInterview.jsp");		
+				rd_stud.forward(request, response);}
+				
 			else {//job-id
 				request.removeAttribute("jobprofile");
 				
@@ -243,6 +329,30 @@ public class JobProfile extends HttpServlet {
 				//response.sendRedirect("/ApmsWebApp/home");
 				
 			}
+			else if(t.equals("post"))
+			{
+				try {
+					Statement stmt = conn.createStatement();
+					String query = "insert into interviews(student_id,job_id,ondate,ontime,interview_status) values"
+							+ "('"+request.getParameter("rollno")+"', '"+request.getParameter("jobid")+"','"+request.getParameter("date")+"','"+
+							request.getParameter("time")+" ', '"+" Pending');";
+					System.out.println(query);
+					
+
+					int m = stmt.executeUpdate(query);
+					if (m==1) {
+						response.sendRedirect("/ApmsWebApp/home");
+					} 
+					else {
+						 response.sendRedirect("message?msg_type=1");
+					}
+					    	
+				} catch (Exception e) {
+					e.printStackTrace();
+					response.sendRedirect("message?msg_type=2");
+				}
+			}
+			
 			
 				
 		}

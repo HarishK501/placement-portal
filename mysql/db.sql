@@ -290,3 +290,15 @@ applications
 
  create table application(id int primary key AUTO_INCREMENT, student_id int, job_id int, app_status varchar(20) DEFAULT 'Inprogress',applied_on DATETIME ,applicant_review LONGTEXT, FOREIGN KEY (student_id) REFERENCES Student(id), FOREIGN KEY (job_id) REFERENCES JobProfile(id));
  ALTER TABLE application AUTO_INCREMENT=3000;
+
+INSERT INTO application( student_id , job_id) VALUES ( 1000, 9000);
+INSERT INTO application( student_id , job_id) VALUES ( 1001, 9000);
+INSERT INTO application( student_id , job_id) VALUES ( 1002, 9000);
+INSERT INTO application( student_id , job_id) VALUES ( 1003, 9001);
+INSERT INTO application( student_id , job_id) VALUES ( 1004, 9001);
+INSERT INTO application( student_id , job_id) VALUES ( 1005, 9001);
+INSERT INTO application( student_id , job_id) VALUES ( 1006, 9002);
+INSERT INTO application( student_id , job_id) VALUES ( 1007, 9002);
+INSERT INTO application( student_id , job_id) VALUES ( 1008, 9002);
+update application set app_status="Completed" where student_id=1006;
+select * from application;

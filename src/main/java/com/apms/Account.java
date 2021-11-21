@@ -104,6 +104,28 @@ public class Account extends HttpServlet {
 						response.sendRedirect("message?msg_type=2");
 					}
 				}
+				if (user.equals("2")) // change Password for pco
+				{
+					try {
+						PreparedStatement query = conn.prepareStatement("select * from Coordinator where id=? and passwd=?");
+						query.setInt(1, id);
+						query.setString(2, oldPass);
+						
+						ResultSet rs = query.executeQuery();
+						if (rs.next()) {
+							query = conn.prepareStatement("update Coordinator set passwd=? where id=?");
+							query.setString(1, newPass);
+							query.setInt(2, id);
+							query.executeUpdate();
+							response.sendRedirect("message?msg_type=4");	
+							
+						} else response.sendRedirect("message?msg_type=1");		
+
+					} catch (Exception e) {
+						e.printStackTrace();
+						response.sendRedirect("message?msg_type=2");
+					}
+				}
 			}
 		}
 		else {
