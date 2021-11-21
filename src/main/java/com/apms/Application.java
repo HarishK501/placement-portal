@@ -80,32 +80,7 @@ public class Application extends HttpServlet {
 			stmt.addBatch(query2);     
 			int[] m = stmt.executeBatch();
 			if (m[0]==1 && m[1]==1) {
-//				response.sendRedirect("/ApmsWebApp/home");
-				// write this is seperate java file or this file and call apply page from here
-				ArrayList<JobProfileObj> jobProfiles = new ArrayList<JobProfileObj>();
-				PreparedStatement query = conn.prepareStatement("SELECT * FROM JobProfile ORDER BY end_date DESC");
-				ResultSet rs = query.executeQuery();
-				int i = 0;
-				while ( rs.next()) {
-					jobProfiles.add(
-							new JobProfileObj(
-									rs.getInt("id"),
-									rs.getString("title"), 
-									rs.getString("organizations"),
-									rs.getString("location"), 
-									rs.getString("end_date")
-									)
-							);
-					i++;
-				}
-				
-				request.setAttribute("jobProfiles", jobProfiles);
-				
-				RequestDispatcher rd_stud = request.getRequestDispatcher("stud/applied.jsp");		
-				rd_stud.forward(request, response);
-				
-				
-				
+				response.sendRedirect("/ApmsWebApp/applied");				
 			} 
 			else {
 				 response.sendRedirect("message?msg_type=1");

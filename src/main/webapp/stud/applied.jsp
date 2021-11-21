@@ -1,7 +1,7 @@
 <%@page import="com.apms.obj.JobProfileObj"%>
 <%@page import="java.util.*"%>
 <%@page import="java.text.*"%>
-<%@page import="com.apms.obj.AnnouncementObj"%>
+<%@page import="com.apms.obj.AppliedObj"%>
 <%@page import="com.apms.obj.ActivityObj"%>
 <%! @SuppressWarnings("unchecked") %>
 
@@ -37,34 +37,20 @@
                 <tr>
                     <th scope="col">Job Profile</th>
                     <th scope="col">Company</th>
-                    <th class="job-location-td" scope="col">Location</th>
-                    <th style="text-align: center;" scope="col">Status</th>
+                    <th class="job-location-td" scope="col">Status</th>
+                    <th style="text-align: center;" scope="col">Applied_on</th>
                 </tr>
             </thead>
             <tbody>
             <% 
-			ArrayList<JobProfileObj> jobProfiles = (ArrayList<JobProfileObj>) request.getAttribute("jobProfiles");
-            for (JobProfileObj a:jobProfiles){
+			ArrayList<AppliedObj> Appliedjob = (ArrayList<AppliedObj>) request.getAttribute("appliedJobs");
+            for (AppliedObj a:Appliedjob){
             %>
             	<tr>
-            		<th scope="row"><a href="jobProfile?t=<%=a.id %>"><%=a.title %></a></th>
-            		<td><%=a.organizations %></td>
-            		<td class="job-location-td"><%=a.location %></td>
-            		<td style="text-align: center;">
-            		<%
-            		Date today = new Date();
-            		SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd"); 
-            		Date endDate = ft.parse(a.end_date);
-            		int x = endDate.compareTo(today);
-            		
-            		if (x == 0) {
-            		%> <span class="status bg-warning">Closes today</span>
-            		<% } else if (x > 0) {
-            		%> <span class="status bg-primary">Open</span>
-            		<% } else {	%>
-            			<span class="status bg-dark">Closed</span>
-            		<% } %>
-            		</td>
+            		<th scope="row"><a href="jobProfile?t=<%=a.job_id %>"><%=a.job_title %></a></th>
+            		<td><%=a.company_name %></td>
+            		<td class="job-location-td"><%=a.app_status %></td>
+            		<td style="text-align: center;" class="job-location-td"><%=a.applied_on %></td>
             	</tr>
                 
                 <% } %>

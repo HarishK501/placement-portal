@@ -25,6 +25,9 @@
                 <a class="nav-link" href="${pageContext.request.contextPath}/home">Home</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="${pageContext.request.contextPath}/applied">Applied Jobs</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="${pageContext.request.contextPath}/interviews">Interviews</a>
             </li>
             <li class="nav-item">
