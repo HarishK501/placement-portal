@@ -301,8 +301,7 @@ applications
  
 
  
- insert into application(student_id, job_id, app_status, applied_on, applicant_review) values
-	(1000, 9000, 'offered' , '2021-07-27 09:37:20', 'Amazon is a well known online Retail company');
+
  insert into application(student_id,job_id,app_status,applied_on,applicant_review) values ( 1000 ,9000,'Inprogress','2021-07-27 09:37:20',' Amazon.com, Inc. is an American multinational technology company which focuses on e-commerce, cloud computing, digital streaming, and artificial intelligence');
 
 insert into application(student_id,job_id,app_status,applied_on,applicant_review) values ( 1000 ,9001,'Inprogress','2021-07-27 09:30:20','Knowledge Lens is a US and India based product and services technology company that builds innovative solutions on niche technology areas such as Big Data Analytics, Data Science, Artificial Intelligence, IoT, Blockchain, ');
